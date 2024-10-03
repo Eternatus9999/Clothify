@@ -1,0 +1,12 @@
+.Normalbtn {
+    -fx-background-color: #00ffff;
+    -fx-background-radius: 30px;
+}
+.Whitebtn {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+}
+.Backbtn {
+    -fx-background-color: #000000;
+    -fx-background-radius: 30px;
+}
