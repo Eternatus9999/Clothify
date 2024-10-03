@@ -10,3 +10,12 @@
     -fx-background-color: #000000;
     -fx-background-radius: 30px;
 }
+.Addbtn {
+    -fx-background-color: #2ED573;
+    -fx-background-radius: 40px;
+}
+.greybg{
+    -fx-background-color: #A09E9E;
+    -fx-background-radius: 20px;
+    
+}
