@@ -1,4 +1,4 @@
-package controller;
+package controller.maincontroller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -94,6 +94,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void RegisterOnAction(ActionEvent event) {
+
 
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,14 +10,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="1063.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="400.0" prefWidth="1063.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-324.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane prefHeight="211.0" prefWidth="1604.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Label layoutX="677.0" layoutY="14.0" prefHeight="176.0" prefWidth="888.0" style="-fx-font-family: Luckiest Guy;" text="CLOTHIFY" textAlignment="CENTER" textFill="AQUA" textOverrun="CLIP">
                            <font>
@@ -38,62 +38,62 @@
                <children>
                   <AnchorPane prefHeight="809.0" prefWidth="253.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-53.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button layoutX="28.0" layoutY="28.0" mnemonicParsing="false" onAction="#NavAddOrderOnAction" prefHeight="52.0" prefWidth="188.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Order">
+                        <Button layoutX="42.0" layoutY="6.0" mnemonicParsing="false" onAction="#NavAddOrderOnAction" prefHeight="52.0" prefWidth="188.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Order">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="28.0" layoutY="87.0" mnemonicParsing="false" onAction="#NavUpdateOrderOnAction" prefHeight="52.0" prefWidth="191.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Order">
+                        <Button layoutX="42.0" layoutY="65.0" mnemonicParsing="false" onAction="#NavUpdateOrderOnAction" prefHeight="52.0" prefWidth="191.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Order">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="28.0" layoutY="146.0" mnemonicParsing="false" onAction="#NavViewOrderOnAction" prefHeight="52.0" prefWidth="191.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Order">
+                        <Button layoutX="42.0" layoutY="124.0" mnemonicParsing="false" onAction="#NavViewOrderOnAction" prefHeight="52.0" prefWidth="191.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Order">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="13.0" layoutY="225.0" mnemonicParsing="false" onAction="#NavAddProductOnAction" prefHeight="52.0" prefWidth="212.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Product">
+                        <Button layoutX="27.0" layoutY="203.0" mnemonicParsing="false" onAction="#NavAddProductOnAction" prefHeight="52.0" prefWidth="212.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Product">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="11.0" layoutY="284.0" mnemonicParsing="false" onAction="#NavUpdateProductOnAction" prefHeight="52.0" prefWidth="215.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Product">
+                        <Button layoutX="25.0" layoutY="262.0" mnemonicParsing="false" onAction="#NavUpdateProductOnAction" prefHeight="52.0" prefWidth="215.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Product">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="343.0" mnemonicParsing="false" onAction="#NavViewProductOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Order">
+                        <Button layoutX="28.0" layoutY="321.0" mnemonicParsing="false" onAction="#NavViewProductOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Order">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="12.0" layoutY="430.0" mnemonicParsing="false" onAction="#NavAddSupplierOnAction" prefHeight="52.0" prefWidth="212.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Supplier">
+                        <Button layoutX="26.0" layoutY="408.0" mnemonicParsing="false" onAction="#NavAddSupplierOnAction" prefHeight="52.0" prefWidth="212.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Supplier">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="10.0" layoutY="489.0" mnemonicParsing="false" onAction="#NavUpdateSupplierOnAction" prefHeight="52.0" prefWidth="215.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Supplier">
+                        <Button layoutX="24.0" layoutY="467.0" mnemonicParsing="false" onAction="#NavUpdateSupplierOnAction" prefHeight="52.0" prefWidth="215.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Supplier">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="13.0" layoutY="548.0" mnemonicParsing="false" onAction="#NavViewSupplierOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Supplier">
+                        <Button layoutX="27.0" layoutY="526.0" mnemonicParsing="false" onAction="#NavViewSupplierOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Supplier">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="3.0" layoutY="639.0" mnemonicParsing="false" onAction="#NavSupplierReportOnAction" prefHeight="52.0" prefWidth="230.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Supplier Report">
+                        <Button layoutX="17.0" layoutY="617.0" mnemonicParsing="false" onAction="#NavSupplierReportOnAction" prefHeight="52.0" prefWidth="230.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Supplier Report">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="4.0" layoutY="698.0" mnemonicParsing="false" onAction="#NavProductReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Product Report">
+                        <Button layoutX="18.0" layoutY="676.0" mnemonicParsing="false" onAction="#NavProductReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Product Report">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="3.0" layoutY="757.0" mnemonicParsing="false" onAction="#NavEmployeeReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Employee Report">
+                        <Button layoutX="17.0" layoutY="735.0" mnemonicParsing="false" onAction="#NavEmployeeReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Employee Report">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -104,9 +104,9 @@
             </AnchorPane>
          </left>
          <center>
-            <AnchorPane prefHeight="809.0" prefWidth="1179.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="887.0" prefWidth="1366.0" BorderPane.alignment="CENTER_LEFT">
                <children>
-                  <AnchorPane fx:id="addorderform" layoutX="34.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="addorderform" layoutX="34.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="34.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -148,9 +148,51 @@
                         <ComboBox cache="true" layoutX="321.0" layoutY="582.0" prefHeight="79.0" prefWidth="701.0" promptText="Category" style="-fx-background-color: #ffffff;" />
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="updateorderform" layoutX="35.0" layoutY="-12.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="ADD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Price">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="QTY">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField layoutX="322.0" layoutY="304.0" prefHeight="74.0" prefWidth="702.0" promptText="Supplier">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField layoutX="323.0" layoutY="212.0" prefHeight="74.0" prefWidth="702.0" promptText="Size">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField layoutX="323.0" layoutY="122.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox cache="true" layoutX="321.0" layoutY="582.0" prefHeight="79.0" prefWidth="701.0" promptText="Category" style="-fx-background-color: #ffffff;" />
+                        <ComboBox cache="true" layoutX="323.0" layoutY="29.0" prefHeight="79.0" prefWidth="701.0" promptText="ID" style="-fx-background-color: #ffffff;" visibleRowCount="5" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </BorderPane>
+      <AnchorPane layoutX="288.0" layoutY="995.0" prefHeight="266.0" prefWidth="1694.0" style="-fx-background-color: #000000;" />
    </children>
 </AnchorPane>
