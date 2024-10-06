@@ -19,3 +19,23 @@
     -fx-background-radius: 20px;
     
 }
+.Updatebtn {
+    -fx-background-color: #FFA502;
+    -fx-background-radius: 40px;
+}
+.Searchbtn {
+    -fx-background-color: #3742FA;
+    -fx-background-radius: 40px;
+}
+.Deletebtn {
+    -fx-background-color: #e74c3c;
+    -fx-background-radius: 40px;
+}
+.Table{
+    -fx-background-color: #ecf0f1;
+    
+}
+.Th{
+    -fx-background-color: #00ffff;
+    -fx-border-color: #000000;
+}
