@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -12,29 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="1063.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-324.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane prefHeight="211.0" prefWidth="1604.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label layoutX="787.0" layoutY="14.0" prefHeight="176.0" prefWidth="888.0" style="-fx-font-family: Luckiest Guy;" text="CLOTHIFY" textAlignment="CENTER" textFill="AQUA" textOverrun="CLIP">
-                           <font>
-                              <Font name="System Bold Italic" size="120.0" />
-                           </font>
-                        </Label>
-                        <Button layoutX="70.0" layoutY="100.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="77.0" prefWidth="88.0" styleClass="Backbtn" stylesheets="@../css/Style.css" text="←" textFill="AQUA">
-                           <font>
-                              <Font name="System Bold" size="36.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-         </top>
          <left>
             <AnchorPane prefHeight="809.0" prefWidth="238.0" BorderPane.alignment="CENTER">
                <children>
@@ -108,7 +89,7 @@
          <center>
             <AnchorPane prefHeight="365.0" prefWidth="1541.0" BorderPane.alignment="CENTER_LEFT">
                <children>
-                  <AnchorPane fx:id="addproductform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="-178.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane fx:id="addproductform" layoutX="212.0" prefHeight="880.0" prefWidth="1429.0" style="-fx-background-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="324.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -279,7 +260,7 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="addorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle fx:id="discount" arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -347,7 +328,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
+                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle fx:id="discount" arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -411,18 +392,102 @@
                         <ComboBox fx:id="o_u_id" layoutX="79.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="OrderID" style="-fx-background-color: #ffffff;" />
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="deleteorderform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="22.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1225.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#DeleteOrderOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Deletebtn" stylesheets="@../css/Style.css" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="suppliertable1" layoutX="40.0" layoutY="36.0" prefHeight="634.0" prefWidth="1188.0" styleClass="Table" stylesheets="@../css/Style.css">
+                           <columns>
+                              <TableColumn fx:id="o_id_col" prefWidth="206.3333740234375" styleClass="Th" text=" Order ID" />
+                              <TableColumn fx:id="o_name_col" minWidth="0.0" prefWidth="326.6666259765625" styleClass="Th" text="Customer Name" />
+                              <TableColumn fx:id="o_paymenttype_col" minWidth="0.0" prefWidth="302.0" styleClass="Th" text="Payment Type" />
+                              <TableColumn fx:id="o_total_price" minWidth="0.0" prefWidth="349.0" styleClass="Th" text="Total Price" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="supplierreportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadSROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="439.0" layoutY="12.0" prefHeight="70.0" prefWidth="369.0" text="Supplier Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="supplierpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="productreportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadPROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="439.0" layoutY="12.0" prefHeight="70.0" prefWidth="369.0" text="Product Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="productreportpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="employeereportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadEROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="439.0" layoutY="12.0" prefHeight="70.0" prefWidth="391.0" text="Employee Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="employeereportpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <bottom>
-            <AnchorPane prefHeight="266.0" prefWidth="1694.0" style="-fx-background-color: #000000;" visible="false" BorderPane.alignment="CENTER" />
-         </bottom>
-         <right>
-            <AnchorPane prefHeight="797.0" prefWidth="672.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
-         </right>
+         <top>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="211.0" prefWidth="1920.0" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="324.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="661.0" layoutY="-4.0" prefHeight="176.0" prefWidth="888.0" style="-fx-font-family: Luckiest Guy;" text="CLOTHIFY" textAlignment="CENTER" textFill="AQUA" textOverrun="CLIP">
+                           <font>
+                              <Font name="System Bold Italic" size="140.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="94.0" layoutY="49.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="143.0" prefWidth="250.0" styleClass="Backbtn" stylesheets="@../css/Style.css" text="←" textFill="AQUA">
+                           <font>
+                              <Font name="System Bold" size="72.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>
