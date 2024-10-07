@@ -1,3 +1,4 @@
+import controller.maincontroller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ public class Starter extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        stage = MainController.stage;
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/main_form.fxml"))));
         stage.setResizable(false);
         stage.show();

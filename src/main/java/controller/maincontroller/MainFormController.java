@@ -94,7 +94,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void RegisterOnAction(ActionEvent event) {
-
+        MainController.getInstance().NavigatetoUserInterface();
 
     }
 
