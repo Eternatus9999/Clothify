@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../../Style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../../Style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.maincontroller.MainFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="407.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Label layoutX="138.0" style="-fx-font-family: Luckiest Guy;" text="CLOTHIFY" textAlignment="CENTER" textFill="AQUA" textOverrun="CLIP">
