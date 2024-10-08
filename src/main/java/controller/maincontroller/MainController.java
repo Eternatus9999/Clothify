@@ -21,4 +21,12 @@ public class MainController {
             throw new RuntimeException(e);
         }
     }
+    public void NavigatetoAdminInterface(){
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/admin_form.fxml"))));
+            stage.setFullScreen(true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

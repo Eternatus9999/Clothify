@@ -1,14 +1,473 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.AdminFormController"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admincontroller.AdminFormController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="1063.0">
+         <left>
+            <AnchorPane prefHeight="863.0" prefWidth="283.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="-3.0" layoutY="-68.0" prefHeight="938.0" prefWidth="336.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-50.0" AnchorPane.topAnchor="-68.0">
+                     <children>
+                        <Button layoutX="103.0" layoutY="66.0" mnemonicParsing="false" onAction="#NavAddEmployeeOnAction" prefHeight="52.0" prefWidth="232.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Employee">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="99.0" layoutY="125.0" mnemonicParsing="false" onAction="#NavUpdateEmployeeOnAction" prefHeight="52.0" prefWidth="233.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Employee">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="101.0" layoutY="184.0" mnemonicParsing="false" onAction="#NavViewEmployeeOnAction" prefHeight="52.0" prefWidth="231.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Employee">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="111.0" layoutY="252.0" mnemonicParsing="false" onAction="#NavAddProductOnAction" prefHeight="52.0" prefWidth="212.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Product">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="109.0" layoutY="311.0" mnemonicParsing="false" onAction="#NavUpdateProductOnAction" prefHeight="52.0" prefWidth="215.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Product">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="112.0" layoutY="370.0" mnemonicParsing="false" onAction="#NavViewProductOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Order">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="111.0" layoutY="436.0" mnemonicParsing="false" onAction="#NavAddSupplierOnAction" prefHeight="52.0" prefWidth="212.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Add Supplier">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="109.0" layoutY="495.0" mnemonicParsing="false" onAction="#NavUpdateSupplierOnAction" prefHeight="52.0" prefWidth="215.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Update Supplier">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="112.0" layoutY="554.0" mnemonicParsing="false" onAction="#NavViewSupplierOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Supplier">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="102.0" layoutY="622.0" mnemonicParsing="false" onAction="#NavSupplierReportOnAction" prefHeight="52.0" prefWidth="230.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Supplier Report">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="103.0" layoutY="681.0" mnemonicParsing="false" onAction="#NavProductReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Product Report">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="102.0" layoutY="740.0" mnemonicParsing="false" onAction="#NavEmployeeReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Employee Report">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="103.0" layoutY="799.0" mnemonicParsing="false" onAction="#NavSalesReportOnAction" prefHeight="52.0" prefWidth="227.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Sales Report">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="365.0" prefWidth="1541.0" BorderPane.alignment="CENTER_LEFT">
+               <children>
+                  <AnchorPane fx:id="addproductform" layoutX="212.0" prefHeight="880.0" prefWidth="1429.0" style="-fx-background-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="324.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#AddProductOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="ADD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="p_price" layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Price">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_qty" layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="QTY">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_size" layoutX="323.0" layoutY="212.0" prefHeight="74.0" prefWidth="702.0" promptText="Size">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_name" layoutX="323.0" layoutY="122.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_id" layoutX="323.0" layoutY="32.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="p_category" cache="true" layoutX="321.0" layoutY="582.0" prefHeight="79.0" prefWidth="701.0" promptText="Category" style="-fx-background-color: #ffffff;" />
+                        <ComboBox fx:id="p_supplier" cache="true" layoutX="322.0" layoutY="304.0" prefHeight="79.0" prefWidth="701.0" promptText="Supplier" style="-fx-background-color: #ffffff;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="updateproductform" layoutX="214.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#UpdateProductOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Updatebtn" stylesheets="@../css/Style.css" text="Update">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="p_u_price" layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Price">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_u_qty" layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="QTY">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_u_size" layoutX="323.0" layoutY="212.0" prefHeight="74.0" prefWidth="702.0" promptText="Size">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="p_u_name" layoutX="323.0" layoutY="122.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="p_u_category" cache="true" layoutX="321.0" layoutY="582.0" prefHeight="79.0" prefWidth="701.0" promptText="Category" style="-fx-background-color: #ffffff;" />
+                        <ComboBox fx:id="p_u_id" cache="true" layoutX="323.0" layoutY="29.0" prefHeight="79.0" prefWidth="701.0" promptText="ID" style="-fx-background-color: #ffffff;" visibleRowCount="5" />
+                        <ComboBox fx:id="p_u_supplier" cache="true" layoutX="323.0" layoutY="301.0" prefHeight="79.0" prefWidth="701.0" promptText="Supplier" style="-fx-background-color: #ffffff;" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="deleteproductform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#DeleteProductOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Deletebtn" stylesheets="@../css/Style.css" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="producttable" layoutX="59.0" layoutY="36.0" prefHeight="634.0" prefWidth="1169.0" styleClass="Table" stylesheets="@../css/Style.css">
+                           <columns>
+                              <TableColumn fx:id="p_id_col" prefWidth="149.0" styleClass="Th" text="ID" />
+                              <TableColumn fx:id="p_name_col" minWidth="0.0" prefWidth="168.0" styleClass="Th" text="Name" />
+                              <TableColumn fx:id="p_size_col" minWidth="0.0" prefWidth="99.0" styleClass="Th" text="Size" />
+                              <TableColumn fx:id="p_supplier_col" minWidth="0.0" prefWidth="237.0" styleClass="Th" text="Supplier" />
+                              <TableColumn fx:id="p_qty_col" minWidth="0.0" prefWidth="118.0" styleClass="Th" text="Qty" />
+                              <TableColumn fx:id="p_category_col" minWidth="0.0" prefWidth="218.0" styleClass="Th" text="Category" />
+                              <TableColumn fx:id="p_priice_col" minWidth="0.0" prefWidth="179.0" styleClass="Th" text="Price" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="addsupplierform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#AddSupplierOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="ADD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="s_contact" layoutX="322.0" layoutY="463.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="s_company" layoutX="323.0" layoutY="329.0" prefHeight="74.0" prefWidth="702.0" promptText="Company">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="s_name" layoutX="323.0" layoutY="197.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="s_id" layoutX="323.0" layoutY="68.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="updatesupplierform" layoutX="214.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#UpdateSupplierOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Updatebtn" stylesheets="@../css/Style.css" text="Update">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="s_u_contact" layoutX="322.0" layoutY="493.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="s_u_company" layoutX="323.0" layoutY="361.0" prefHeight="74.0" prefWidth="702.0" promptText="Company">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="s_u_name" layoutX="323.0" layoutY="224.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="s_u_id" cache="true" layoutX="323.0" layoutY="94.0" prefHeight="79.0" prefWidth="701.0" promptText="ID" style="-fx-background-color: #ffffff;" visibleRowCount="5" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="deletesupplierform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#DeleteSupplierOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Deletebtn" stylesheets="@../css/Style.css" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="suppliertable" layoutX="59.0" layoutY="36.0" prefHeight="634.0" prefWidth="1169.0" styleClass="Table" stylesheets="@../css/Style.css">
+                           <columns>
+                              <TableColumn fx:id="s_id_col" prefWidth="206.3333740234375" styleClass="Th" text="ID" />
+                              <TableColumn fx:id="s_name_col" minWidth="0.0" prefWidth="326.6666259765625" styleClass="Th" text="Name" />
+                              <TableColumn fx:id="s_company_col" minWidth="0.0" prefWidth="302.0" styleClass="Th" text="Company" />
+                              <TableColumn fx:id="s_contact_col" minWidth="0.0" prefWidth="333.33331298828125" styleClass="Th" text="Contact" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="supplierreportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadSROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="439.0" layoutY="12.0" prefHeight="70.0" prefWidth="369.0" text="Supplier Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="supplierpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="productreportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadPROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="439.0" layoutY="12.0" prefHeight="70.0" prefWidth="369.0" text="Product Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="productreportpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="employeereportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadEROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="439.0" layoutY="12.0" prefHeight="70.0" prefWidth="391.0" text="Employee Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="employeereportpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="addemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#AddEmployeeOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="ADD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="e_password" layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Password">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_contact" layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_email" layoutX="323.0" layoutY="212.0" prefHeight="74.0" prefWidth="702.0" promptText="Email">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_name" layoutX="323.0" layoutY="122.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_id" layoutX="323.0" layoutY="32.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_address" layoutX="323.0" layoutY="302.0" prefHeight="74.0" prefWidth="702.0" promptText="Address">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_re_password" layoutX="320.0" layoutY="587.0" prefHeight="74.0" prefWidth="702.0" promptText="Re-Password">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="updateemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#UpdateEmployeeOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Updatebtn" stylesheets="@../css/Style.css" text="Update">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="e_u_password" layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Password">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_u_contact" layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_u_email" layoutX="323.0" layoutY="212.0" prefHeight="74.0" prefWidth="702.0" promptText="Email">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_u_name" layoutX="323.0" layoutY="122.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_u_address" layoutX="323.0" layoutY="302.0" prefHeight="74.0" prefWidth="702.0" promptText="Address">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="e_u_re_password" layoutX="320.0" layoutY="587.0" prefHeight="74.0" prefWidth="702.0" promptText="Re-Password">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="e_u_id" layoutX="322.0" layoutY="32.0" prefHeight="75.0" prefWidth="703.0" promptText="ID" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="deleteemployeeform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#DeleteEmployeeOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Deletebtn" stylesheets="@../css/Style.css" text="Delete">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <TableView fx:id="employeetable" layoutX="59.0" layoutY="36.0" prefHeight="634.0" prefWidth="1169.0" styleClass="Table" stylesheets="@../css/Style.css">
+                           <columns>
+                              <TableColumn fx:id="e_id_col" prefWidth="135.6666259765625" styleClass="Th" text="ID" />
+                              <TableColumn fx:id="e_name_col" minWidth="0.0" prefWidth="235.3333740234375" styleClass="Th" text="Name" />
+                              <TableColumn fx:id="e_email_col" minWidth="0.0" prefWidth="233.333251953125" styleClass="Th" text="Email" />
+                              <TableColumn fx:id="e_address_col" minWidth="0.0" prefWidth="312.666748046875" styleClass="Th" text="Address" />
+                              <TableColumn fx:id="e_contact_col" minWidth="0.0" prefWidth="248.6666259765625" styleClass="Th" text="Contact" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="salesreportform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
+                        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="676.0" layoutX="6.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="1259.0" />
+                        <Button layoutX="482.0" layoutY="699.0" mnemonicParsing="false" onAction="#DownloadSsROnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="DOWNLOAD">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="494.0" layoutY="10.0" prefHeight="70.0" prefWidth="289.0" text="Sales Report" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <PieChart fx:id="salesreportchart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
+                        <ComboBox fx:id="salesreporttype" layoutX="495.0" layoutY="84.0" prefHeight="25.0" prefWidth="282.0" promptText="Type" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <top>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="1775.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="324.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="661.0" layoutY="-4.0" prefHeight="176.0" prefWidth="888.0" style="-fx-font-family: Luckiest Guy;" text="CLOTHIFY" textAlignment="CENTER" textFill="AQUA" textOverrun="CLIP">
+                           <font>
+                              <Font name="System Bold Italic" size="140.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="92.0" layoutY="-26.0" mnemonicParsing="false" onAction="#BackOnAction" prefHeight="143.0" prefWidth="250.0" styleClass="Backbtn" stylesheets="@../css/Style.css" text="←" textFill="AQUA">
+                           <font>
+                              <Font name="System Bold" size="72.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
 </AnchorPane>

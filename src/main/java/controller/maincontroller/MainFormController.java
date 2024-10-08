@@ -70,7 +70,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void LoginOnAction(ActionEvent event) {
-
+        MainController.getInstance().NavigatetoAdminInterface();
     }
 
     @FXML
