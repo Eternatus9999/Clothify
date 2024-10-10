@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
 
+    String forgotemail;
+
     @FXML
     private TextField adress;
 
@@ -70,11 +72,12 @@ public class MainFormController implements Initializable {
 
     @FXML
     void LoginOnAction(ActionEvent event) {
-        MainController.getInstance().NavigatetoAdminInterface();
+        MainController.getInstance().CheckUser(passwordlog.getText(),emaillog.getText());
     }
 
     @FXML
     void NavForgotPassword(ActionEvent event) {
+        forgotemail = emaillog.getText();
         mainform.setVisible(false);
         forgotpasswordform.setVisible(true);
     }
@@ -95,7 +98,6 @@ public class MainFormController implements Initializable {
     @FXML
     void RegisterOnAction(ActionEvent event) {
         MainController.getInstance().NavigatetoUserInterface();
-
     }
 
     @Override

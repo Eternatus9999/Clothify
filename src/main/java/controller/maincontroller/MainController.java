@@ -2,6 +2,7 @@ package controller.maincontroller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +28,17 @@ public class MainController {
             stage.setFullScreen(true);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+    public void CheckUser(String password, String username){
+        if(password.contains("Admin")){
+            NavigatetoAdminInterface();
+        }
+        else if(password.contains("User")){
+            NavigatetoUserInterface();
+        }
+        else{
+            new Alert(Alert.AlertType.ERROR,"Password is Incorrect");
         }
     }
 }
