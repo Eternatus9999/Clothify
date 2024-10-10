@@ -97,7 +97,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void RegisterOnAction(ActionEvent event) {
-        MainController.getInstance().NavigatetoUserInterface();
+        MainController.getInstance().CheckValidation(name.getText(),email.getText(),adress.getText(),password.getText(),checkpassword.getText(),contact.getText());
     }
 
     @Override
