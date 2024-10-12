@@ -1,10 +1,11 @@
 package repository.custom.impl;
 
 import entity.ProductEntity;
-import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import repository.custom.ProductDao;
 import util.HibernateUtil;
+
+import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
     @Override
@@ -23,8 +24,9 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public ObservableList<ProductEntity> getAll() {
-        return null;
+    public List<ProductEntity> getAll() {
+        Session session = HibernateUtil.getProductSession();
+        return session.createQuery("From ProductEntity", ProductEntity.class).list();
     }
 
     @Override

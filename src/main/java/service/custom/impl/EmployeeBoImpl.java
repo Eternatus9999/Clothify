@@ -9,6 +9,8 @@ import repository.custom.EmployeeDao;
 import service.custom.EmployeeBo;
 import util.DaoType;
 
+import java.util.List;
+
 public class EmployeeBoImpl implements EmployeeBo {
     public boolean addEmployee(Employee employee) {
         EmployeeEntity entity = new ModelMapper().map(employee, EmployeeEntity.class);
@@ -18,5 +20,13 @@ public class EmployeeBoImpl implements EmployeeBo {
         customerdao.save(entity);
 
         return true;
+    }
+
+    @Override
+    public List<EmployeeEntity> getEmployee() {
+
+        EmployeeDao customerdao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
+
+        return customerdao.getAll();
     }
 }

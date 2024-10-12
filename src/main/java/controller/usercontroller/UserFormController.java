@@ -1,6 +1,9 @@
 package controller.usercontroller;
 
+import controller.ProductController;
+import controller.SupplierController;
 import controller.maincontroller.MainController;
+import entity.SupplierEntity;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,13 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Supplier;
 
 import java.io.IOException;
 import java.net.URL;
@@ -289,20 +289,33 @@ public class UserFormController implements Initializable {
 
     @FXML
     void AddProductOnAction(ActionEvent event) {
-          UserController.getInstance().AddProduct(
-                  p_id.getText(),
-                  p_name.getText(),
-                  p_size.getText(),
-                  p_supplier.getValue().toString(),
-                  Integer.parseInt(p_qty.getText()),
-                  Double.parseDouble(p_price.getText()),
-                  p_category.getValue().toString()
-          );
+        if(p_supplier.getValue()==null) {
+            new Alert(Alert.AlertType.ERROR,"Select a Supplier").showAndWait();
+        }
+        else if(p_category.getValue()==null){
+            new Alert(Alert.AlertType.ERROR,"Select a Category").showAndWait();
+        }
+        else{
+            ProductController.getInstance().AddProduct(
+                    p_id.getText(),
+                    p_name.getText(),
+                    p_size.getText(),
+                    p_supplier.getValue().toString(),
+                    Integer.parseInt(p_qty.getText()),
+                    Double.parseDouble(p_price.getText()),
+                    p_category.getValue().toString()
+            );
+        }
     }
 
     @FXML
     void AddSupplierOnAction(ActionEvent event) {
-
+        SupplierController.getInstance().AddSupplier(
+                s_id.getText(),
+                s_name.getText(),
+                s_company.getText(),
+                s_contact.getText()
+        );
     }
 
     @FXML
@@ -372,6 +385,8 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
+        setSupplier();
     }
 
     @FXML
@@ -388,6 +403,7 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
     }
 
     @FXML
@@ -583,6 +599,11 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
+        p_id.setText(ProductController.getInstance().GenerateId());
+        s_id.setText(SupplierController.getInstance().GenerateId());
+
+
         setCategory();
         setSupplier();
     }
@@ -596,6 +617,10 @@ public class UserFormController implements Initializable {
     }
     private void setSupplier(){
         List<String> supplierlist = new ArrayList<>();
+        List<SupplierEntity> supplierentitylist = SupplierController.getInstance().getSupplier();
+        for (int i = 0; i <supplierentitylist.size(); i++){
+            supplierlist.add((supplierentitylist.get(i)).getId());
+        }
         p_supplier.setItems(FXCollections.observableArrayList(supplierlist));
     }
 }

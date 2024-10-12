@@ -1,10 +1,11 @@
 package repository.custom.impl;
 
 import entity.SupplierEntity;
-import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import repository.custom.SupplierDao;
 import util.HibernateUtil;
+
+import java.util.List;
 
 public class SupplierDaoImpl implements SupplierDao {
     @Override
@@ -23,8 +24,9 @@ public class SupplierDaoImpl implements SupplierDao {
     }
 
     @Override
-    public ObservableList<SupplierEntity> getAll() {
-        return null;
+    public List<SupplierEntity> getAll() {
+        Session session = HibernateUtil.getSupplierSession();
+        return session.createQuery("from SupplierEntity",SupplierEntity.class).list();
     }
 
     @Override

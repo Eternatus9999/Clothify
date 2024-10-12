@@ -17,7 +17,6 @@ public class DaoFactory {
         switch (type){
             case EMPLOYEE:return (T) new EmployeeDaoImpl();
             case PRODUCT:return (T) new ProductDaoImpl();
-            case ORDER:return (T) new OrderDaoImpl();
             case SUPPLIER:return (T) new SupplierDaoImpl();
             default:return null;
         }

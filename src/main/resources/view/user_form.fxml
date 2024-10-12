@@ -118,7 +118,7 @@
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="p_id" layoutX="323.0" layoutY="32.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
+                        <TextField fx:id="p_id" editable="false" layoutX="323.0" layoutY="32.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
                            <font>
                               <Font size="36.0" />
                            </font>

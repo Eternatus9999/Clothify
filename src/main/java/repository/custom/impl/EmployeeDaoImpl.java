@@ -1,10 +1,12 @@
 package repository.custom.impl;
 
 import entity.EmployeeEntity;
-import javafx.collections.ObservableList;
+import model.Employee;
 import repository.custom.EmployeeDao;
 import org.hibernate.Session;
 import util.HibernateUtil;
+
+import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
     @Override
@@ -23,8 +25,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public ObservableList<EmployeeEntity> getAll() {
-        return null;
+    public List<EmployeeEntity> getAll() {
+        Session session = HibernateUtil.getEmployeeSession();
+        return session.createQuery("from EmployeeEntity",EmployeeEntity.class).list();
     }
 
     @Override

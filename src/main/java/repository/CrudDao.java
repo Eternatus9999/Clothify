@@ -2,10 +2,12 @@ package repository;
 
 import javafx.collections.ObservableList;
 
+import java.util.List;
+
 public interface CrudDao <T> extends SuperDao{
     boolean save(T t);
     boolean delete(String id);
-    ObservableList<T> getAll();
+    List<T> getAll();
     boolean update(T t);
     T search(String name);
 }
