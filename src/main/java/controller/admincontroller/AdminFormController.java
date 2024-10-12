@@ -42,31 +42,31 @@ public class AdminFormController implements Initializable {
     private TextField e_address;
 
     @FXML
-    private TableColumn<?, ?> e_address_col;
+    private TableColumn e_address_col;
 
     @FXML
     private TextField e_contact;
 
     @FXML
-    private TableColumn<?, ?> e_contact_col;
+    private TableColumn e_contact_col;
 
     @FXML
     private TextField e_email;
 
     @FXML
-    private TableColumn<?, ?> e_email_col;
+    private TableColumn e_email_col;
 
     @FXML
     private TextField e_id;
 
     @FXML
-    private TableColumn<?, ?> e_id_col;
+    private TableColumn e_id_col;
 
     @FXML
     private TextField e_name;
 
     @FXML
-    private TableColumn<?, ?> e_name_col;
+    private TableColumn e_name_col;
 
     @FXML
     private TextField e_password;
@@ -105,55 +105,55 @@ public class AdminFormController implements Initializable {
     private PieChart employeereportpiechart;
 
     @FXML
-    private TableView<?> employeetable;
+    private TableView employeetable;
 
     @FXML
-    private ComboBox<?> p_category;
+    private ComboBox p_category;
 
     @FXML
-    private TableColumn<?, ?> p_category_col;
+    private TableColumn p_category_col;
 
     @FXML
     private TextField p_id;
 
     @FXML
-    private TableColumn<?, ?> p_id_col;
+    private TableColumn p_id_col;
 
     @FXML
     private TextField p_name;
 
     @FXML
-    private TableColumn<?, ?> p_name_col;
+    private TableColumn p_name_col;
 
     @FXML
     private TextField p_price;
 
     @FXML
-    private TableColumn<?, ?> p_priice_col;
+    private TableColumn p_priice_col;
 
     @FXML
     private TextField p_qty;
 
     @FXML
-    private TableColumn<?, ?> p_qty_col;
+    private TableColumn p_qty_col;
 
     @FXML
     private TextField p_size;
 
     @FXML
-    private TableColumn<?, ?> p_size_col;
+    private TableColumn p_size_col;
 
     @FXML
     private ComboBox<?> p_supplier;
 
     @FXML
-    private TableColumn<?, ?> p_supplier_col;
+    private TableColumn p_supplier_col;
 
     @FXML
-    private ComboBox<?> p_u_category;
+    private ComboBox p_u_category;
 
     @FXML
-    private ComboBox<?> p_u_id;
+    private ComboBox p_u_id;
 
     @FXML
     private TextField p_u_name;
@@ -168,7 +168,7 @@ public class AdminFormController implements Initializable {
     private TextField p_u_size;
 
     @FXML
-    private ComboBox<?> p_u_supplier;
+    private ComboBox p_u_supplier;
 
     @FXML
     private AnchorPane productreportform;
@@ -177,31 +177,31 @@ public class AdminFormController implements Initializable {
     private PieChart productreportpiechart;
 
     @FXML
-    private TableView<?> producttable;
+    private TableView producttable;
 
     @FXML
     private TextField s_company;
 
     @FXML
-    private TableColumn<?, ?> s_company_col;
+    private TableColumn s_company_col;
 
     @FXML
     private TextField s_contact;
 
     @FXML
-    private TableColumn<?, ?> s_contact_col;
+    private TableColumn s_contact_col;
 
     @FXML
     private TextField s_id;
 
     @FXML
-    private TableColumn<?, ?> s_id_col;
+    private TableColumn s_id_col;
 
     @FXML
     private TextField s_name;
 
     @FXML
-    private TableColumn<?, ?> s_name_col;
+    private TableColumn s_name_col;
 
     @FXML
     private TextField s_u_company;
@@ -219,7 +219,7 @@ public class AdminFormController implements Initializable {
     private PieChart salesreportchart;
 
     @FXML
-    private ComboBox<?> salesreporttype;
+    private ComboBox salesreporttype;
 
     @FXML
     private PieChart supplierpiechart;
@@ -228,7 +228,7 @@ public class AdminFormController implements Initializable {
     private AnchorPane supplierreportform;
 
     @FXML
-    private TableView<?> suppliertable;
+    private TableView suppliertable;
 
     @FXML
     private AnchorPane updateemployeeform;

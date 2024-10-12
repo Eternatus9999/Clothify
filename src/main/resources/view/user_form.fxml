@@ -328,7 +328,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle fx:id="discount" arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -384,7 +384,7 @@
                               <TableColumn fx:id="u_cart_item_qty_col" minWidth="0.0" prefWidth="161.6666259765625" styleClass="Th" text="Qty" />
                            </columns>
                         </TableView>
-                        <Button layoutX="998.0" layoutY="614.0" mnemonicParsing="false" onAction="#UpdateItemOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="Deletebtn" stylesheets="@../css/Style.css" text="REMOVE ITEM">
+                        <Button layoutX="998.0" layoutY="614.0" mnemonicParsing="false" onAction="#UpdateRemoveItemOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="Deletebtn" stylesheets="@../css/Style.css" text="REMOVE ITEM">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

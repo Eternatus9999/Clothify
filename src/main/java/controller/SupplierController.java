@@ -3,7 +3,6 @@ package controller;
 import entity.SupplierEntity;
 import javafx.scene.control.Alert;
 import model.Supplier;
-import repository.custom.SupplierDao;
 import service.custom.SupplierBo;
 import service.custom.impl.SupplierBoImpl;
 

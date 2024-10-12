@@ -14,7 +14,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Supplier;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,16 +33,16 @@ public class UserFormController implements Initializable {
     private AnchorPane addsupplierform;
 
     @FXML
-    private TableView<?> cart;
+    private TableView cart;
 
     @FXML
-    private TableColumn<?, ?> cart_item_id_col;
+    private TableColumn cart_item_id_col;
 
     @FXML
-    private TableColumn<?, ?> cart_item_name_col;
+    private TableColumn cart_item_name_col;
 
     @FXML
-    private TableColumn<?, ?> cart_item_qty_col;
+    private TableColumn cart_item_qty_col;
 
     @FXML
     private AnchorPane deleteorderform;
@@ -61,100 +60,100 @@ public class UserFormController implements Initializable {
     private PieChart employeereportpiechart;
 
     @FXML
-    private TableColumn<?, ?> item_category_col;
+    private TableColumn item_category_col;
 
     @FXML
-    private TableColumn<?, ?> item_id_col;
+    private TableColumn item_id_col;
 
     @FXML
-    private TableColumn<?, ?> item_name_col;
+    private TableColumn item_name_col;
 
     @FXML
-    private TableColumn<?, ?> item_price_col;
+    private TableColumn item_price_col;
 
     @FXML
-    private TableColumn<?, ?> item_qty_col;
+    private TableColumn item_qty_col;
 
     @FXML
-    private TableView<?> itemtable;
+    private TableView itemtable;
 
     @FXML
     private TextField o_id;
 
     @FXML
-    private TableColumn<?, ?> o_id_col;
+    private TableColumn o_id_col;
 
     @FXML
     private TextField o_name;
 
     @FXML
-    private TableColumn<?, ?> o_name_col;
+    private TableColumn o_name_col;
 
     @FXML
     private ComboBox<?> o_paymenttype;
 
     @FXML
-    private TableColumn<?, ?> o_paymenttype_col;
+    private TableColumn o_paymenttype_col;
 
     @FXML
-    private TableColumn<?, ?> o_total_price;
+    private TableColumn o_total_price;
 
     @FXML
-    private ComboBox<?> o_u_id;
+    private ComboBox o_u_id;
 
     @FXML
     private TextField o_u_name;
 
     @FXML
-    private ComboBox<?> o_u_paymenttype;
+    private ComboBox o_u_paymenttype;
 
     @FXML
-    private ComboBox<String> p_category;
+    private ComboBox p_category;
 
     @FXML
-    private TableColumn<?, ?> p_category_col;
+    private TableColumn p_category_col;
 
     @FXML
     private TextField p_id;
 
     @FXML
-    private TableColumn<?, ?> p_id_col;
+    private TableColumn p_id_col;
 
     @FXML
     private TextField p_name;
 
     @FXML
-    private TableColumn<?, ?> p_name_col;
+    private TableColumn p_name_col;
 
     @FXML
     private TextField p_price;
 
     @FXML
-    private TableColumn<?, ?> p_priice_col;
+    private TableColumn p_priice_col;
 
     @FXML
     private TextField p_qty;
 
     @FXML
-    private TableColumn<?, ?> p_qty_col;
+    private TableColumn p_qty_col;
 
     @FXML
     private TextField p_size;
 
     @FXML
-    private TableColumn<?, ?> p_size_col;
+    private TableColumn p_size_col;
 
     @FXML
-    private ComboBox<String> p_supplier;
+    private ComboBox p_supplier;
 
     @FXML
-    private TableColumn<?, ?> p_supplier_col;
+    private TableColumn p_supplier_col;
 
     @FXML
-    private ComboBox<?> p_u_category;
+    private ComboBox p_u_category;
 
     @FXML
-    private ComboBox<?> p_u_id;
+    private ComboBox p_u_id;
 
     @FXML
     private TextField p_u_name;
@@ -169,7 +168,7 @@ public class UserFormController implements Initializable {
     private TextField p_u_size;
 
     @FXML
-    private ComboBox<?> p_u_supplier;
+    private ComboBox p_u_supplier;
 
     @FXML
     private AnchorPane productreportform;
@@ -178,7 +177,7 @@ public class UserFormController implements Initializable {
     private PieChart productreportpiechart;
 
     @FXML
-    private TableView<?> producttable;
+    private TableView producttable;
 
     @FXML
     private TextField qty;
@@ -187,25 +186,25 @@ public class UserFormController implements Initializable {
     private TextField s_company;
 
     @FXML
-    private TableColumn<?, ?> s_company_col;
+    private TableColumn s_company_col;
 
     @FXML
     private TextField s_contact;
 
     @FXML
-    private TableColumn<?, ?> s_contact_col;
+    private TableColumn s_contact_col;
 
     @FXML
     private TextField s_id;
 
     @FXML
-    private TableColumn<?, ?> s_id_col;
+    private TableColumn s_id_col;
 
     @FXML
     private TextField s_name;
 
     @FXML
-    private TableColumn<?, ?> s_name_col;
+    private TableColumn s_name_col;
 
     @FXML
     private TextField s_u_company;
@@ -214,7 +213,7 @@ public class UserFormController implements Initializable {
     private TextField s_u_contact;
 
     @FXML
-    private ComboBox<?> s_u_id;
+    private ComboBox s_u_id;
 
     @FXML
     private TextField s_u_name;
@@ -226,46 +225,46 @@ public class UserFormController implements Initializable {
     private AnchorPane supplierreportform;
 
     @FXML
-    private TableView<?> suppliertable;
+    private TableView suppliertable;
 
     @FXML
-    private TableView<?> suppliertable1;
+    private TableView suppliertable1;
 
     @FXML
     private Label totalprice;
 
     @FXML
-    private TableView<?> u_cart;
+    private TableView u_cart;
 
     @FXML
-    private TableColumn<?, ?> u_cart_item_id_col;
+    private TableColumn u_cart_item_id_col;
 
     @FXML
-    private TableColumn<?, ?> u_cart_item_name_col;
+    private TableColumn u_cart_item_name_col;
 
     @FXML
-    private TableColumn<?, ?> u_cart_item_qty_col;
+    private TableColumn u_cart_item_qty_col;
 
     @FXML
     private TextField u_discount;
 
     @FXML
-    private TableColumn<?, ?> u_item_category_col;
+    private TableColumn u_item_category_col;
 
     @FXML
-    private TableColumn<?, ?> u_item_id_col;
+    private TableColumn u_item_id_col;
 
     @FXML
-    private TableColumn<?, ?> u_item_name_col;
+    private TableColumn u_item_name_col;
 
     @FXML
-    private TableColumn<?, ?> u_item_price_col;
+    private TableColumn u_item_price_col;
 
     @FXML
-    private TableColumn<?, ?> u_item_qty_col;
+    private TableColumn u_item_qty_col;
 
     @FXML
-    private TableView<?> u_itemtable;
+    private TableView u_itemtable;
 
     @FXML
     private TextField u_qty;
@@ -305,6 +304,7 @@ public class UserFormController implements Initializable {
                     Double.parseDouble(p_price.getText()),
                     p_category.getValue().toString()
             );
+            s_id.setText(SupplierController.getInstance().GenerateId());
         }
     }
 
@@ -576,7 +576,7 @@ public class UserFormController implements Initializable {
     }
 
     @FXML
-    void UpdateItemOnAction(ActionEvent event) {
+    void UpdateRemoveItemOnAction(ActionEvent event) {
 
     }
 
@@ -605,7 +605,6 @@ public class UserFormController implements Initializable {
 
 
         setCategory();
-        setSupplier();
     }
 
     private void setCategory(){
@@ -615,6 +614,7 @@ public class UserFormController implements Initializable {
         categorylist.add("Kids");
         p_category.setItems(FXCollections.observableArrayList(categorylist));
     }
+
     private void setSupplier(){
         List<String> supplierlist = new ArrayList<>();
         List<SupplierEntity> supplierentitylist = SupplierController.getInstance().getSupplier();

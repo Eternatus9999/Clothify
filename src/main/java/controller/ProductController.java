@@ -37,6 +37,7 @@ public class ProductController {
             productservice.addProduct(new Product(id, name, size, supplier, qty, price, category));
         }
     }
+
     public String GenerateId(){
         List<ProductEntity> list = productservice.getProduct();
         int id = list.size()==0?1:Integer.parseInt((list.get(list.size()-1).getId().split("P")[1]))+1;

@@ -1,6 +1,6 @@
 package controller.maincontroller;
 
-import controller.usercontroller.UserController;
+import controller.EmployeeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -98,7 +98,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void RegisterOnAction(ActionEvent event) {
-        UserController.getInstance().addEmployee(name.getText(),email.getText(),adress.getText(),password.getText(),checkpassword.getText(),contact.getText());
+        EmployeeController.getInstance().addEmployee(name.getText(),email.getText(),adress.getText(),password.getText(),checkpassword.getText(),contact.getText());
     }
 
     @Override

@@ -27,6 +27,7 @@ public class MainController {
             throw new RuntimeException(e);
         }
     }
+
     public void NavigatetoAdminInterface(){
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/admin_form.fxml"))));
@@ -35,6 +36,7 @@ public class MainController {
             throw new RuntimeException(e);
         }
     }
+
     public void CheckUser(String password, String username){
         if(password.contains("Admin")){
             NavigatetoAdminInterface();
