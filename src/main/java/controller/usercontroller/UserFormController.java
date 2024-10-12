@@ -549,7 +549,7 @@ public class UserFormController implements Initializable {
     }
 
     @FXML
-    void UpdateRemoveItemOnAction(ActionEvent event) {
+    void UpdateItemOnAction(ActionEvent event) {
 
     }
 

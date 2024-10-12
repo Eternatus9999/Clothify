@@ -1,4 +1,4 @@
-package dto;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class User {
+public class Employee {
 
     private String id;
     private String name;
