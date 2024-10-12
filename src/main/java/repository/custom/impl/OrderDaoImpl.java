@@ -1,17 +1,17 @@
 package repository.custom.impl;
 
-import entity.EmployeeEntity;
+import entity.OrderEntity;
 import javafx.collections.ObservableList;
-import repository.custom.EmployeeDao;
 import org.hibernate.Session;
+import repository.custom.OrderDao;
 import util.HibernateUtil;
 
-public class EmployeeDaoImpl implements EmployeeDao {
+public class OrderDaoImpl implements OrderDao {
     @Override
-    public boolean save(EmployeeEntity employee) {
-        Session session = HibernateUtil.getEmployeeSession();
+    public boolean save(OrderEntity order) {
+        Session session = HibernateUtil.getOrderSession();
         session.beginTransaction();
-        session.persist(employee);
+        session.persist(order);
         session.getTransaction().commit();
         session.close();
         return false;
@@ -23,17 +23,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public ObservableList<EmployeeEntity> getAll() {
+    public ObservableList<OrderEntity> getAll() {
         return null;
     }
 
     @Override
-    public boolean update(EmployeeEntity employee) {
+    public boolean update(OrderEntity orderEntity) {
         return false;
     }
 
     @Override
-    public EmployeeEntity search(String name) {
+    public OrderEntity search(String name) {
         return null;
     }
 }

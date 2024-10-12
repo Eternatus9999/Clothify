@@ -1,6 +1,7 @@
 package controller.usercontroller;
 
 import controller.maincontroller.MainController;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserFormController implements Initializable {
@@ -106,7 +109,7 @@ public class UserFormController implements Initializable {
     private ComboBox<?> o_u_paymenttype;
 
     @FXML
-    private ComboBox<?> p_category;
+    private ComboBox<String> p_category;
 
     @FXML
     private TableColumn<?, ?> p_category_col;
@@ -142,7 +145,7 @@ public class UserFormController implements Initializable {
     private TableColumn<?, ?> p_size_col;
 
     @FXML
-    private ComboBox<?> p_supplier;
+    private ComboBox<String> p_supplier;
 
     @FXML
     private TableColumn<?, ?> p_supplier_col;
@@ -286,7 +289,15 @@ public class UserFormController implements Initializable {
 
     @FXML
     void AddProductOnAction(ActionEvent event) {
-
+          UserController.getInstance().AddProduct(
+                  p_id.getText(),
+                  p_name.getText(),
+                  p_size.getText(),
+                  p_supplier.getValue().toString(),
+                  Integer.parseInt(p_qty.getText()),
+                  Double.parseDouble(p_price.getText()),
+                  p_category.getValue().toString()
+          );
     }
 
     @FXML
@@ -572,5 +583,19 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+        setCategory();
+        setSupplier();
+    }
+
+    private void setCategory(){
+        List<String> categorylist = new ArrayList<>();
+        categorylist.add("Gents");
+        categorylist.add("Ladies");
+        categorylist.add("Kids");
+        p_category.setItems(FXCollections.observableArrayList(categorylist));
+    }
+    private void setSupplier(){
+        List<String> supplierlist = new ArrayList<>();
+        p_supplier.setItems(FXCollections.observableArrayList(supplierlist));
     }
 }
