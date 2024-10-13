@@ -46,7 +46,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <Button layoutX="113.0" layoutY="321.0" mnemonicParsing="false" onAction="#NavViewProductOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Order">
+                        <Button layoutX="113.0" layoutY="321.0" mnemonicParsing="false" onAction="#NavViewProductOnAction" prefHeight="52.0" prefWidth="208.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="View Product">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -178,7 +178,7 @@
                               <TableColumn fx:id="p_supplier_col" minWidth="0.0" prefWidth="237.0" styleClass="Th" text="Supplier" />
                               <TableColumn fx:id="p_qty_col" minWidth="0.0" prefWidth="118.0" styleClass="Th" text="Qty" />
                               <TableColumn fx:id="p_category_col" minWidth="0.0" prefWidth="218.0" styleClass="Th" text="Category" />
-                              <TableColumn fx:id="p_priice_col" minWidth="0.0" prefWidth="179.0" styleClass="Th" text="Price" />
+                              <TableColumn fx:id="p_price_col" minWidth="0.0" prefWidth="179.0" styleClass="Th" text="Price" />
                           </columns>
                         </TableView>
                      </children>
@@ -260,7 +260,7 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="addorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -288,10 +288,11 @@
                         <TableView fx:id="itemtable" layoutX="65.0" layoutY="117.0" prefHeight="226.0" prefWidth="1160.0" styleClass="Table" stylesheets="@../css/Style.css">
                           <columns>
                             <TableColumn fx:id="item_id_col" prefWidth="143.0" styleClass="Th" text="ID" />
-                            <TableColumn fx:id="item_name_col" minWidth="0.0" prefWidth="313.0" styleClass="Th" text="Name" />
-                              <TableColumn fx:id="item_category_col" minWidth="0.0" prefWidth="319.0" styleClass="Th" text="Category" />
-                              <TableColumn fx:id="item_qty_col" minWidth="0.0" prefWidth="162.0" styleClass="Th" text="Qty" />
-                              <TableColumn fx:id="item_price_col" minWidth="0.0" prefWidth="221.0" styleClass="Th" text="Price" />
+                            <TableColumn fx:id="item_name_col" minWidth="0.0" prefWidth="290.0" styleClass="Th" text="Name" />
+                              <TableColumn fx:id="item_category_col" minWidth="0.0" prefWidth="171.0" styleClass="Th" text="Category" />
+                              <TableColumn fx:id="item_size_col" minWidth="0.0" prefWidth="180.0" styleClass="Th" text="Size" />
+                              <TableColumn fx:id="item_qty_col" minWidth="0.0" prefWidth="165.0" styleClass="Th" text="Qty" />
+                              <TableColumn fx:id="item_price_col" minWidth="0.0" prefWidth="209.0" styleClass="Th" text="Price" />
                           </columns>
                         </TableView>
                         <TextField fx:id="qty" layoutX="726.0" layoutY="359.0" prefHeight="47.0" prefWidth="240.0" promptText="Qty">
@@ -328,7 +329,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
+                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle fx:id="discount" arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -348,20 +349,21 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
-                        <TableView fx:id="u_itemtable" layoutX="65.0" layoutY="117.0" prefHeight="226.0" prefWidth="1160.0" styleClass="Table" stylesheets="@../css/Style.css">
-                           <columns>
-                              <TableColumn fx:id="u_item_id_col" prefWidth="143.0" styleClass="Th" text="ID" />
-                              <TableColumn fx:id="u_item_name_col" minWidth="0.0" prefWidth="313.0" styleClass="Th" text="Name" />
-                              <TableColumn fx:id="u_item_category_col" minWidth="0.0" prefWidth="319.0" styleClass="Th" text="Category" />
-                              <TableColumn fx:id="u_item_qty_col" minWidth="0.0" prefWidth="162.0" styleClass="Th" text="Qty" />
-                              <TableColumn fx:id="u_item_price_col" minWidth="0.0" prefWidth="221.0" styleClass="Th" text="Price" />
-                           </columns>
-                        </TableView>
                         <TextField fx:id="u_qty" layoutX="726.0" layoutY="359.0" prefHeight="47.0" prefWidth="240.0" promptText="Qty">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
+                        <TableView fx:id="u_itemtable" layoutX="65.0" layoutY="117.0" prefHeight="226.0" prefWidth="1160.0" styleClass="Table" stylesheets="@../css/Style.css">
+                           <columns>
+                              <TableColumn fx:id="u_item_id_col" prefWidth="143.0" styleClass="Th" text="ID" />
+                              <TableColumn fx:id="u_item_name_col" minWidth="0.0" prefWidth="293.0" styleClass="Th" text="Name" />
+                              <TableColumn fx:id="u_item_category_col" minWidth="0.0" prefWidth="182.0" styleClass="Th" text="Category" />
+                              <TableColumn fx:id="u_item_size_col" minWidth="0.0" prefWidth="170.0" styleClass="Th" text="Size" />
+                              <TableColumn fx:id="u_item_qty_col" minWidth="0.0" prefWidth="164.0" styleClass="Th" text="Qty" />
+                              <TableColumn fx:id="u_item_price_col" minWidth="0.0" prefWidth="206.0" styleClass="Th" text="Price" />
+                           </columns>
+                        </TableView>
                         <Label layoutX="77.0" layoutY="352.0" prefHeight="63.0" prefWidth="185.0" text="Total Price:">
                            <font>
                               <Font size="36.0" />
@@ -401,7 +403,7 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Button>
-                        <TableView fx:id="suppliertable1" layoutX="40.0" layoutY="36.0" prefHeight="634.0" prefWidth="1188.0" styleClass="Table" stylesheets="@../css/Style.css">
+                        <TableView fx:id="d_ordertable" layoutX="40.0" layoutY="36.0" prefHeight="634.0" prefWidth="1188.0" styleClass="Table" stylesheets="@../css/Style.css">
                            <columns>
                               <TableColumn fx:id="o_id_col" prefWidth="206.3333740234375" styleClass="Th" text=" Order ID" />
                               <TableColumn fx:id="o_name_col" minWidth="0.0" prefWidth="326.6666259765625" styleClass="Th" text="Customer Name" />

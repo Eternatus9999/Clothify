@@ -4,6 +4,7 @@ import controller.EmployeeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -78,9 +79,14 @@ public class MainFormController implements Initializable {
 
     @FXML
     void NavForgotPassword(ActionEvent event) {
-        forgotemail = emaillog.getText();
-        mainform.setVisible(false);
-        forgotpasswordform.setVisible(true);
+        if(forgotemail.isEmpty()){
+            new Alert(Alert.AlertType.ERROR,"Enter the Email to set a new password").showAndWait();
+        }
+        else{
+            forgotemail = emaillog.getText();
+            mainform.setVisible(false);
+            forgotpasswordform.setVisible(true);
+        }
     }
 
     @FXML
@@ -98,7 +104,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void RegisterOnAction(ActionEvent event) {
-        EmployeeController.getInstance().addEmployee(name.getText(),email.getText(),adress.getText(),password.getText(),checkpassword.getText(),contact.getText());
+        EmployeeController.getInstance().AddEmployee(name.getText(),email.getText(),adress.getText(),password.getText(),checkpassword.getText(),contact.getText());
     }
 
     @Override

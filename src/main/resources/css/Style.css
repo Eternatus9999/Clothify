@@ -32,10 +32,10 @@
     -fx-background-radius: 40px;
 }
 .Table{
-    -fx-background-color: #ecf0f1;
+    -fx-background-color: #00ffff;
     
 }
 .Th{
-    -fx-background-color: #00ffff;
+    -fx-background-color: #ecf0f1;
     -fx-border-color: #000000;
 }

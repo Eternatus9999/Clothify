@@ -8,6 +8,7 @@ import util.HibernateUtil;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
+
     @Override
     public boolean save(ProductEntity product) {
         Session session = HibernateUtil.getProductSession();
@@ -20,6 +21,10 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public boolean delete(String id) {
+        Session session = HibernateUtil.getProductSession();
+        session.beginTransaction();
+        session.remove(session.get(ProductEntity.class,id));
+        session.getTransaction().commit();
         return false;
     }
 
@@ -31,11 +36,17 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public boolean update(ProductEntity productEntity) {
+        Session session = HibernateUtil.getProductSession();
+        session.beginTransaction();
+        session.get(ProductEntity.class,productEntity.getId());
+        session.merge(productEntity);
+        session.getTransaction().commit();
         return false;
     }
 
     @Override
-    public ProductEntity search(String name) {
-        return null;
+    public ProductEntity search(String id) {
+        Session session = HibernateUtil.getProductSession();
+        return session.get(ProductEntity.class,id);
     }
 }

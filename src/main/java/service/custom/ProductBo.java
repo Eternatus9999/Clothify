@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface ProductBo {
     boolean addProduct(Product product);
-    List<ProductEntity> getProduct();
+    boolean updateProduct(Product product);
+    boolean deleteProduct(Product entity);
+    Product searchProduct(String id);
+    List<Product> getProduct();
 }
