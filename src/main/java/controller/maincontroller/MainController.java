@@ -22,7 +22,9 @@ public class MainController {
     public void NavigatetoUserInterface(){
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/user_form.fxml"))));
-            stage.setFullScreen(true);
+            stage.setResizable(false);
+            stage.setX(0);
+            stage.setY(0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -31,7 +33,8 @@ public class MainController {
     public void NavigatetoAdminInterface(){
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/admin_form.fxml"))));
-            stage.setFullScreen(true);
+            stage.setX(0);
+            stage.setY(0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
