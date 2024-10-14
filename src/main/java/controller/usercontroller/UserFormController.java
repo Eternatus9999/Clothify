@@ -387,6 +387,8 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
+        setProducttable();
     }
 
     @FXML
@@ -486,6 +488,8 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
+        setProducttable();
     }
 
     @FXML
@@ -706,6 +710,7 @@ public class UserFormController implements Initializable {
         s_id.setText(SupplierController.getInstance().GenerateId());
 
         setCategory();
+        setProducttable();
     }
 
     private void setCategory(){

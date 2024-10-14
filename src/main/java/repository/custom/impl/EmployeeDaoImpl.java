@@ -38,8 +38,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public boolean update(EmployeeEntity employeeentity) {
         Session session = HibernateUtil.getEmployeeSession();
         session.beginTransaction();
-        session.get(EmployeeEntity.class,employeeentity.getId());
-        session.merge(employeeentity);
+        session.merge(employeeentity.getId(),employeeentity);
         session.getTransaction().commit();
         return false;
     }

@@ -38,8 +38,7 @@ public class ProductDaoImpl implements ProductDao {
     public boolean update(ProductEntity productEntity) {
         Session session = HibernateUtil.getProductSession();
         session.beginTransaction();
-        session.get(ProductEntity.class,productEntity.getId());
-        session.merge(productEntity);
+        session.merge(productEntity.getId(),productEntity);
         session.getTransaction().commit();
         return false;
     }

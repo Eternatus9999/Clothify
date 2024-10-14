@@ -118,4 +118,5 @@ public class EmployeeController {
         new Alert(Alert.AlertType.CONFIRMATION,"Do you want to delete this Employee").showAndWait();
         employeeservice.deleteEmployee(entity);
     }
+
 }

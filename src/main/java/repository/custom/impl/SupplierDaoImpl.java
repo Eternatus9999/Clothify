@@ -38,8 +38,7 @@ public class SupplierDaoImpl implements SupplierDao {
     public boolean update(SupplierEntity supplierentity) {
         Session session = HibernateUtil.getSupplierSession();
         session.beginTransaction();
-        session.get(SupplierEntity.class,supplierentity.getId());
-        session.merge(supplierentity);
+        session.merge(supplierentity.getId(),supplierentity);
         session.getTransaction().commit();
         return false;
     }
