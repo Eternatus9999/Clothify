@@ -2,7 +2,6 @@ package repository;
 
 
 import repository.custom.impl.EmployeeDaoImpl;
-import repository.custom.impl.OrderDaoImpl;
 import repository.custom.impl.ProductDaoImpl;
 import repository.custom.impl.SupplierDaoImpl;
 import util.DaoType;

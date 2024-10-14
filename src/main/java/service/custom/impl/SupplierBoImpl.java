@@ -35,6 +35,12 @@ public class SupplierBoImpl implements SupplierBo {
 
     @Override
     public boolean updateSupplier(Supplier supplier) {
+        SupplierEntity entity = new ModelMapper().map(supplier, SupplierEntity.class);
+
+        SupplierDao supplierdao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
+
+        supplierdao.update(entity);
+
         return false;
     }
 

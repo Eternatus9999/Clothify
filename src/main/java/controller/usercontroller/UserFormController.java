@@ -313,8 +313,8 @@ public class UserFormController implements Initializable {
                     p_name.getText(),
                     p_size.getText(),
                     p_supplier.getValue(),
-                    Integer.parseInt(p_qty.getText()),
-                    Double.parseDouble(p_price.getText()),
+                    Integer.parseInt(p_qty.getText()==null?"0":p_qty.getText()),
+                    Double.parseDouble(p_price.getText()==null?"0":p_price.getText()),
                     p_category.getValue()
             );
             setProductText();
@@ -348,14 +348,18 @@ public class UserFormController implements Initializable {
 
     @FXML
     void DeleteProductOnAction(ActionEvent event) {
-        ProductController.getInstance().DeleteProduct(deleteproduct);
-        setProducttable();
+        if(deleteproduct!=null){
+            ProductController.getInstance().DeleteProduct(deleteproduct);
+            setProducttable();
+        }
     }
 
     @FXML
     void DeleteSupplierOnAction(ActionEvent event) {
-        SupplierController.getInstance().DeleteSupplier(deletesupplier);
-        setSuppliertable();
+        if(deletesupplier!=null){
+            SupplierController.getInstance().DeleteSupplier(deletesupplier);
+            setSuppliertable();
+        }
     }
 
     @FXML
@@ -603,16 +607,19 @@ public class UserFormController implements Initializable {
 
     @FXML
     void UpdateProductOnAction(ActionEvent event) {
-        ProductController.getInstance().UpdateProduct(
-                p_u_id.getValue().toString(),
-                p_u_name.getText(),
-                p_u_size.getText(),
-                p_u_supplier.getValue().toString(),
-                Integer.parseInt(p_u_qty.getText()),
-                Double.parseDouble(p_u_price.getText()),
-                p_u_category.getValue().toString()
-        );
-        setProductText();
+        if( p_u_id.getValue()!= null && p_u_category.getValue()!=null){
+            ProductController.getInstance().UpdateProduct(
+                    p_u_id.getValue().toString(),
+                    p_u_name.getText(),
+                    p_u_size.getText(),
+                    p_u_supplier.getValue().toString(),
+                    Integer.parseInt(p_u_qty.getText()==null?"0":p_u_qty.getText()),
+                    Double.parseDouble(p_u_price.getText()==null?"0":p_u_price.getText()),
+                    p_u_category.getValue().toString()
+            );
+            setProductText();
+        }
+
     }
 
     @FXML
@@ -622,13 +629,15 @@ public class UserFormController implements Initializable {
 
     @FXML
     void UpdateSupplierOnAction(ActionEvent event) {
-        SupplierController.getInstance().UpdateSupplier(
-                s_u_id.getValue().toString(),
-                s_u_name.getText(),
-                s_u_company.getText(),
-                s_u_contact.getText()
-        );
+        if(s_u_id.getValue()!=null){
+            SupplierController.getInstance().UpdateSupplier(
+                    s_u_id.getValue().toString(),
+                    s_u_name.getText(),
+                    s_u_company.getText(),
+                    s_u_contact.getText()
+            );
         setSuppliertext();
+        }
     }
 
     @Override
