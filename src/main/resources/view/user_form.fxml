@@ -332,7 +332,7 @@
                   <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
-                        <Rectangle fx:id="discount" arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
                         <Button layoutX="503.0" layoutY="702.0" mnemonicParsing="false" onAction="#UpdateOrderOnAction" prefHeight="80.0" prefWidth="320.0" styleClass="Updatebtn" stylesheets="@../css/Style.css" text="UPDATE ORDER">
                            <font>
                               <Font name="System Bold" size="36.0" />
@@ -394,7 +394,7 @@
                         <ComboBox fx:id="o_u_id" layoutX="79.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="OrderID" style="-fx-background-color: #ffffff;" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="deleteorderform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="deleteorderform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="22.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1225.0" />
@@ -407,8 +407,9 @@
                            <columns>
                               <TableColumn fx:id="o_id_col" prefWidth="206.3333740234375" styleClass="Th" text=" Order ID" />
                               <TableColumn fx:id="o_name_col" minWidth="0.0" prefWidth="326.6666259765625" styleClass="Th" text="Customer Name" />
-                              <TableColumn fx:id="o_paymenttype_col" minWidth="0.0" prefWidth="302.0" styleClass="Th" text="Payment Type" />
-                              <TableColumn fx:id="o_total_price" minWidth="0.0" prefWidth="349.0" styleClass="Th" text="Total Price" />
+                              <TableColumn fx:id="o_paymenttype_col" minWidth="0.0" prefWidth="189.0" styleClass="Th" text="Payment Type" />
+                              <TableColumn fx:id="o_total_price_col" minWidth="0.0" prefWidth="234.0" styleClass="Th" text="Total Price" />
+                              <TableColumn fx:id="o_date_col" minWidth="0.0" prefWidth="228.0" styleClass="Th" text="Date" />
                            </columns>
                         </TableView>
                      </children>

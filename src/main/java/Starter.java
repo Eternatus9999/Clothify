@@ -13,6 +13,8 @@ public class Starter extends Application {
         stage = MainController.stage;
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("view/main_form.fxml"))));
         stage.setResizable(false);
+        stage.setX(0);
+        stage.setY(0);
         stage.show();
     }
 }

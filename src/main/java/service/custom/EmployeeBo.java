@@ -7,6 +7,6 @@ import java.util.List;
 public interface EmployeeBo {
     boolean addEmployee(Employee employee);
     boolean updateEmployee(Employee employee);
-    boolean deleteEmployee(Employee entity);
+    boolean deleteEmployee(Employee employee);
     List<Employee> getEmployee();
 }

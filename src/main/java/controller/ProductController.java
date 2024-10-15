@@ -24,42 +24,86 @@ public class ProductController {
         return "P"+id;
     }
 
-    public void AddProduct(String id,String name, String size, String supplier, int qty, double price,String category){
-        if(name.isEmpty()){
-            new Alert(Alert.AlertType.ERROR,"Enter a Name!").showAndWait();
+    public boolean AddProduct(String id,String name, String size, String supplier, String qtys, String prices,String category){
+        int qty =0;
+        double price =0;
+        try{
+            qty = Integer.parseInt(qtys);
+            try{
+                price = Double.parseDouble(prices);
+
+                if(name.isEmpty()){
+                    new Alert(Alert.AlertType.ERROR,"Enter a Name!").showAndWait();
+                    return true;
+                }
+                else if(size.isEmpty()){
+                    new Alert(Alert.AlertType.ERROR,"Enter a Size!").showAndWait();
+                    return true;
+                }
+                else if(qty==0){
+                    new Alert(Alert.AlertType.ERROR,"Enter a QTY!").showAndWait();
+                    return true;
+                }
+                else if(price==0){
+                    new Alert(Alert.AlertType.ERROR,"Enter a Price!").showAndWait();
+                    return true;
+                }
+                else{
+                    new Alert(Alert.AlertType.INFORMATION,"Product added successfully!").showAndWait();
+                    productservice.addProduct(new Product(id, name, size, supplier, qty, price, category));
+                }
+            }
+            catch (NumberFormatException ex){
+                new Alert(Alert.AlertType.ERROR,"price cannot contains letters!").showAndWait();
+                return false;
+            }
         }
-        else if(size.isEmpty()){
-            new Alert(Alert.AlertType.ERROR,"Enter a Size!").showAndWait();
+        catch (NumberFormatException ex){
+            new Alert(Alert.AlertType.ERROR,"qty cannot contains letters!").showAndWait();
+            return false;
         }
-        else if(qty==0){
-            new Alert(Alert.AlertType.ERROR,"Enter a QTY!").showAndWait();
-        }
-        else if(price==0){
-            new Alert(Alert.AlertType.ERROR,"Enter a Price!").showAndWait();
-        }
-        else{
-            new Alert(Alert.AlertType.INFORMATION,"Product added successfully!").showAndWait();
-            productservice.addProduct(new Product(id, name, size, supplier, qty, price, category));
-        }
+        return true;
     }
 
-    public void UpdateProduct(String id,String name, String size, String supplier, int qty, double price,String category){
-        if(name.isEmpty()){
-            new Alert(Alert.AlertType.ERROR,"Enter a Name!").showAndWait();
+    public boolean UpdateProduct(String id,String name, String size, String supplier, String qtys, String prices,String category){
+        int qty =0;
+        double price =0;
+        try{
+            qty = Integer.parseInt(qtys);
+            try{
+                price = Double.parseDouble(prices);
+
+                if(name.isEmpty()){
+                    new Alert(Alert.AlertType.ERROR,"Enter a Name!").showAndWait();
+                    return true;
+                }
+                else if(size.isEmpty()){
+                    new Alert(Alert.AlertType.ERROR,"Enter a Size!").showAndWait();
+                    return true;
+                }
+                else if(qty==0){
+                    new Alert(Alert.AlertType.ERROR,"Enter a QTY!").showAndWait();
+                    return true;
+                }
+                else if(price==0){
+                    new Alert(Alert.AlertType.ERROR,"Enter a Price!").showAndWait();
+                    return true;
+                }
+                else{
+                    new Alert(Alert.AlertType.INFORMATION,"Product added successfully!").showAndWait();
+                    productservice.updateProduct(new Product(id, name, size, supplier, qty, price, category));
+                }
+            }
+            catch (NumberFormatException ex){
+                new Alert(Alert.AlertType.ERROR,"price cannot contains letters!").showAndWait();
+                return false;
+            }
         }
-        else if(size.isEmpty()){
-            new Alert(Alert.AlertType.ERROR,"Enter a Size!").showAndWait();
+        catch (NumberFormatException ex){
+            new Alert(Alert.AlertType.ERROR,"qty cannot contains letters!").showAndWait();
+            return false;
         }
-        else if(qty==0){
-            new Alert(Alert.AlertType.ERROR,"Enter a QTY!").showAndWait();
-        }
-        else if(price==0){
-            new Alert(Alert.AlertType.ERROR,"Enter a Price!").showAndWait();
-        }
-        else{
-            new Alert(Alert.AlertType.INFORMATION,"Product update successfully!").showAndWait();
-            productservice.updateProduct(new Product(id, name, size, supplier, qty, price, category));
-        }
+        return true;
     }
 
     public void DeleteProduct(Product entity){
