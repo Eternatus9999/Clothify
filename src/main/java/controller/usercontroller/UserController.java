@@ -40,7 +40,6 @@ public class UserController {
     }
 
     public boolean DeleteOrder(Order order){
-        new Alert(Alert.AlertType.CONFIRMATION,"Order Delete Successfully").showAndWait();
         OrderController.getInstance().DeleteOrder(order);
         List<OrderDetails> list = OrderController.getInstance().deleteCart(order);
         list.forEach(orderDetails -> {

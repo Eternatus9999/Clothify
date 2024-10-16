@@ -363,6 +363,7 @@ public class UserFormController implements Initializable {
         if(deleteorder!=null){
             UserController.getInstance().DeleteOrder(deleteorder);
             setOrdertable();
+            new Alert(Alert.AlertType.INFORMATION,"Order Delete Successfully").showAndWait();
         }
         else{
             new Alert(Alert.AlertType.ERROR,"Select an Order to delete!").showAndWait();
@@ -650,12 +651,38 @@ public class UserFormController implements Initializable {
 
     @FXML
     void UpdateAddItemOnAction(ActionEvent event) {
-        additem(1);
+        addupdateitem(1);
     }
 
     @FXML
     void UpdateOrderOnAction(ActionEvent event) {
-
+        if(o_u_paymenttype.getValue()==null){
+            new Alert(Alert.AlertType.ERROR,"Select a Payment Method").showAndWait();
+        }
+        else{
+            UserController.getInstance().DeleteOrder(deleteorder);
+            if(UserController.getInstance().PlaceOrder(new Order(
+                            o_u_id.getValue(),
+                            o_u_name.getText(),
+                            o_u_email.getText(),
+                            o_u_paymenttype.getValue(),
+                            Double.parseDouble(totalprice.getText()),
+                            0,
+                            UserController.getInstance().getDate()
+                    ),cart.getItems()
+            )){
+                new Alert(Alert.AlertType.INFORMATION,"Order updated successfully").showAndWait();
+                additem(-1);
+                u_totalprice.setText(0+"");
+                o_u_name.setText(null);
+                o_u_paymenttype.setValue(null);
+                o_u_id.setValue(null);
+                setProducttable();
+            }
+            else{
+                new Alert(Alert.AlertType.ERROR,"Order didn't updated successfully").showAndWait();
+            }
+        }
     }
 
     @FXML
@@ -685,14 +712,14 @@ public class UserFormController implements Initializable {
 
     @FXML
     void UpdateRemoveItemOnAction(ActionEvent event) {
-        removeItem();
+        removeupdateItem();
     }
 
     @FXML
     void UpdateSupplierOnAction(ActionEvent event) {
         if(s_u_id.getValue()!=null){
             SupplierController.getInstance().UpdateSupplier(
-                    s_u_id.getValue().toString(),
+                    s_u_id.getValue(),
                     s_u_name.getText(),
                     s_u_company.getText(),
                     s_u_contact.getText()
@@ -950,6 +977,36 @@ public class UserFormController implements Initializable {
         }
     }
 
+    private void addupdateitem(int i){
+        if(i == -1){
+            u_cart.setItems(FXCollections.observableArrayList());
+            u_cart.refresh();
+            OrderController.getInstance().getCart(-1);
+        }else {
+            if (addproduct==null) {
+                new Alert(Alert.AlertType.ERROR,"Select a Product to add").showAndWait();
+            } else {
+                List<OrderDetails> cartlist = OrderController.getInstance().getCart();
+                if (u_qty.getText()==null||(u_qty.getText()).isEmpty() || u_qty.getText().equals("0") ){
+                    new Alert(Alert.AlertType.ERROR, "Enter a qty").showAndWait();
+                } else if (Integer.parseInt(u_qty.getText()) > addproduct.getQty()) {
+                    new Alert(Alert.AlertType.ERROR, "Not enough qty").showAndWait();
+                } else {
+                    addproduct.setQty(Integer.parseInt(u_qty.getText()));
+                    addproduct.setPrice(addproduct.getQty()*addproduct.getPrice());
+                    addproduct.setDiscount(Integer.parseInt((u_discount.getText() == null ||u_discount.getText().isEmpty())?"0":u_discount.getText()));
+                    cartlist.add(addproduct);
+                    u_cart.setItems(FXCollections.observableArrayList(cartlist));
+                    OrderController.getInstance().setTotal(addproduct.getPrice()-addproduct.getDiscount());
+                    u_totalprice.setText(OrderController.getInstance().getTotal());
+                    addproduct = null;
+                    u_discount.setText(null);
+                    u_qty.setText(null);
+                }
+            }
+        }
+    }
+
     private void removeItem(){
         if(deleteitem==null){
             new Alert(Alert.AlertType.ERROR,"Select an Item to remove").showAndWait();
@@ -960,6 +1017,19 @@ public class UserFormController implements Initializable {
             totalprice.setText(OrderController.getInstance().getTotal());
             deleteitem =null;
             cart.setItems(FXCollections.observableArrayList(cartlist));
+        }
+    }
+
+    private void removeupdateItem(){
+        if(deleteitem==null){
+            new Alert(Alert.AlertType.ERROR,"Select an Item to remove").showAndWait();
+        }else {
+            List<OrderDetails> cartlist = OrderController.getInstance().getCart();
+            cartlist.remove(deleteitem);
+            OrderController.getInstance().setTotal((deleteitem.getPrice()-deleteitem.getDiscount())*-1);
+            u_totalprice.setText(OrderController.getInstance().getTotal());
+            deleteitem =null;
+            u_cart.setItems(FXCollections.observableArrayList(cartlist));
         }
     }
 
@@ -977,6 +1047,7 @@ public class UserFormController implements Initializable {
         Order order = OrderController.getInstance().SearchOrder(id);
         o_u_name.setText(order.getCustname());
         o_u_paymenttype.setValue(order.getPaymenttype());
+        u_totalprice.setText(order.getTotal()+"");
         o_u_email.setText(order.getCustemail());
         u_cart.setItems(FXCollections.observableArrayList(OrderController.getInstance().getorderdetails(order.getOrid())));
     }
