@@ -1,24 +1,33 @@
 package controller.admincontroller;
 
+
+import controller.ProductController;
+import controller.SupplierController;
 import controller.maincontroller.MainController;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Product;
+import model.Supplier;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminFormController implements Initializable {
+
+    private Product deleteproduct;
+    private Supplier deletesupplier;
 
     @FXML
     private AnchorPane addemployeeform;
@@ -144,7 +153,7 @@ public class AdminFormController implements Initializable {
     private TableColumn p_size_col;
 
     @FXML
-    private ComboBox<?> p_supplier;
+    private ComboBox p_supplier;
 
     @FXML
     private TableColumn p_supplier_col;
@@ -153,7 +162,7 @@ public class AdminFormController implements Initializable {
     private ComboBox p_u_category;
 
     @FXML
-    private ComboBox p_u_id;
+    private ComboBox<String> p_u_id;
 
     @FXML
     private TextField p_u_name;
@@ -177,7 +186,7 @@ public class AdminFormController implements Initializable {
     private PieChart productreportpiechart;
 
     @FXML
-    private TableView producttable;
+    private TableView<Product> producttable;
 
     @FXML
     private TextField s_company;
@@ -210,7 +219,7 @@ public class AdminFormController implements Initializable {
     private TextField s_u_contact;
 
     @FXML
-    private ComboBox<?> s_u_id;
+    private ComboBox<String> s_u_id;
 
     @FXML
     private TextField s_u_name;
@@ -228,7 +237,7 @@ public class AdminFormController implements Initializable {
     private AnchorPane supplierreportform;
 
     @FXML
-    private TableView suppliertable;
+    private TableView<Supplier> suppliertable;
 
     @FXML
     private AnchorPane updateemployeeform;
@@ -328,6 +337,9 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setCategory();
+        setSupplier();
     }
 
     @FXML
@@ -447,6 +459,10 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setCategory();
+        setSupplier();
+        setProduct();
     }
 
     @FXML
@@ -464,6 +480,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setSupplier();
     }
 
     @FXML
@@ -481,6 +499,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+
     }
 
     @FXML
@@ -498,6 +518,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setProducttable();
     }
 
     @FXML
@@ -515,6 +537,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setSuppliertable();
     }
 
     @FXML
@@ -547,5 +571,129 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        p_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        p_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+        p_size_col.setCellValueFactory(new PropertyValueFactory<>("size"));
+        p_supplier_col.setCellValueFactory(new PropertyValueFactory<>("supplier"));
+        p_qty_col.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        p_category_col.setCellValueFactory(new PropertyValueFactory<>("category"));
+
+
+
+        s_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        s_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+        s_company_col.setCellValueFactory(new PropertyValueFactory<>("company"));
+        s_contact_col.setCellValueFactory(new PropertyValueFactory<>("contact"));
+
+        producttable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                deleteproduct = t1;
+            }
+        }));
+
+        p_u_id.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                setProductText(t1);
+            }
+        }));
+
+        suppliertable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                deletesupplier = t1;
+            }
+        }));
+
+        s_u_id.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                setSuppliertext(t1);
+            }
+        }));
+
+        p_id.setText(ProductController.getInstance().GenerateId());
+        s_id.setText(SupplierController.getInstance().GenerateId());
+
     }
+
+    private void setCategory(){
+        List<String> categorylist = new ArrayList<>();
+        categorylist.add("Gents");
+        categorylist.add("Ladies");
+        categorylist.add("Kids");
+        p_category.setItems(FXCollections.observableArrayList(categorylist));
+        p_u_category.setItems(FXCollections.observableArrayList(categorylist));
+    }
+
+    private void setSupplier(){
+        List<String> supplierlist = new ArrayList<>();
+        List<Supplier> supplierentitylist = SupplierController.getInstance().getSupplier();
+        for (int i = 0; i <supplierentitylist.size(); i++){
+            supplierlist.add((supplierentitylist.get(i)).getId());
+        }
+        p_supplier.setItems(FXCollections.observableArrayList(supplierlist));
+        p_u_supplier.setItems(FXCollections.observableArrayList(supplierlist));
+        s_u_id.setItems(FXCollections.observableArrayList(supplierlist));
+    }
+
+    private void setProduct(){
+        List<String> productlist = new ArrayList<>();
+        List<Product> productentitylist = ProductController.getInstance().getProduct();
+        for (int i = 0; i <productentitylist.size(); i++){
+            productlist.add((productentitylist.get(i)).getId());
+        }
+        p_u_id.setItems(FXCollections.observableArrayList(productlist));
+    }
+
+    private void setProducttable(){
+        producttable.setItems(FXCollections.observableArrayList(ProductController.getInstance().getProduct()));
+    }
+
+    private void setSuppliertable(){
+        suppliertable.setItems(FXCollections.observableArrayList(SupplierController.getInstance().getSupplier()));
+    }
+
+    private void setProductText(String id){
+        Product product =  ProductController.getInstance().SearchProduct(id);
+        p_u_category.setValue(product.getCategory());
+        p_u_supplier.setValue(product.getSupplier());
+        p_u_name.setText(product.getName());
+        p_u_price.setText(product.getPrice()+"");
+        p_u_qty.setText(product.getQty()+"");
+        p_u_size.setText(product.getSize());
+    }
+
+    private void setProductText(){
+        p_u_id.setValue(null);
+        p_u_supplier.setValue(null);
+        p_u_category.setValue(null);
+        p_u_name.setText(null);
+        p_u_price.setText(null);
+        p_u_qty.setText(null);
+        p_u_size.setText(null);
+        p_supplier.setValue(null);
+        p_category.setValue(null);
+        p_name.setText(null);
+        p_price.setText(null);
+        p_qty.setText(null);
+        p_size.setText(null);
+    }
+
+    private void setSuppliertext(String id){
+        Supplier supplier = SupplierController.getInstance().SearchSupplier(id);
+        s_u_name.setText(supplier.getName());
+        s_u_company.setText(supplier.getCompany());
+        s_u_contact.setText(supplier.getContact());
+    }
+
+    private void setSuppliertext(){
+        s_u_id.setValue(null);
+        s_u_name.setText(null);
+        s_u_company.setText(null);
+        s_u_contact.setText(null);
+        s_name.setText(null);
+        s_company.setText(null);
+        s_contact.setText(null);
+    }
+
+
 }
