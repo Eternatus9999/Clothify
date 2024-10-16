@@ -1,9 +1,6 @@
 package util;
 
-import entity.EmployeeEntity;
-import entity.OrderEntity;
-import entity.ProductEntity;
-import entity.SupplierEntity;
+import entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -17,6 +14,7 @@ public class HibernateUtil {
     private static SessionFactory ordersession = createOrderSession();
     private static SessionFactory productsession = createProductSession();
     private static SessionFactory employeesession = createEmployeeSession();
+    private static SessionFactory orderdetailssession = createOrderDetailSession();
 
     private static SessionFactory createSupplierSession() {
         StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
@@ -58,6 +56,17 @@ public class HibernateUtil {
                 .build();
         return metadata.getSessionFactoryBuilder().build();
     }
+    private static SessionFactory createOrderDetailSession() {
+        StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+
+        Metadata metadata = new MetadataSources(build)
+                .addAnnotatedClass(OrderDetailsEntity.class)
+                .getMetadataBuilder()
+                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
+                .build();
+        return metadata.getSessionFactoryBuilder().build();
+    }
+
 
     public static Session getSupplierSession(){
         return suppliersession.openSession();
@@ -70,5 +79,8 @@ public class HibernateUtil {
     }
     public static Session getEmployeeSession(){
         return employeesession.openSession();
+    }
+    public static Session getOrderDetailsSession(){
+        return orderdetailssession.openSession();
     }
 }

@@ -207,7 +207,7 @@
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="s_id" layoutX="323.0" layoutY="68.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
+                        <TextField fx:id="s_id" editable="false" layoutX="323.0" layoutY="68.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -269,17 +269,17 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="o_id" layoutX="55.0" layoutY="29.0" prefHeight="47.0" prefWidth="291.0" promptText="OrderID">
+                        <TextField fx:id="o_id" editable="false" layoutX="55.0" layoutY="29.0" prefHeight="47.0" prefWidth="291.0" promptText="OrderID">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="o_name" layoutX="422.0" layoutY="30.0" prefHeight="47.0" prefWidth="291.0" promptText="Customer Name">
+                        <TextField fx:id="o_name" layoutX="363.0" layoutY="29.0" prefHeight="47.0" prefWidth="291.0" promptText="Customer Name">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <ComboBox fx:id="o_paymenttype" layoutX="783.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="Payment Type" style="-fx-background-color: #ffffff;" />
+                        <ComboBox fx:id="o_paymenttype" layoutX="978.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="Payment Type" style="-fx-background-color: #ffffff;" />
                         <Button layoutX="998.0" layoutY="358.0" mnemonicParsing="false" onAction="#AddItemOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="ADD ITEM">
                            <font>
                               <Font name="System Bold" size="24.0" />
@@ -327,9 +327,14 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
+                        <TextField fx:id="o_email" layoutX="666.0" layoutY="29.0" prefHeight="47.0" prefWidth="291.0" promptText="Customer Email">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="updateorderform" layoutX="212.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -338,12 +343,12 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="o_u_name" layoutX="422.0" layoutY="30.0" prefHeight="47.0" prefWidth="291.0" promptText="Customer Name">
+                        <TextField fx:id="o_u_name" layoutX="358.0" layoutY="29.0" prefHeight="47.0" prefWidth="291.0" promptText="Customer Name">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <ComboBox fx:id="o_u_paymenttype" layoutX="783.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="Payment Type" style="-fx-background-color: #ffffff;" />
+                        <ComboBox fx:id="o_u_paymenttype" layoutX="966.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="Payment Type" style="-fx-background-color: #ffffff;" />
                         <Button layoutX="998.0" layoutY="358.0" mnemonicParsing="false" onAction="#UpdateAddItemOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="Addbtn" stylesheets="@../css/Style.css" text="ADD ITEM">
                            <font>
                               <Font name="System Bold" size="24.0" />
@@ -392,9 +397,14 @@
                            </font>
                         </Button>
                         <ComboBox fx:id="o_u_id" layoutX="79.0" layoutY="29.0" prefHeight="47.0" prefWidth="255.0" promptText="OrderID" style="-fx-background-color: #ffffff;" />
+                        <TextField fx:id="o_u_email" layoutX="663.0" layoutY="29.0" prefHeight="47.0" prefWidth="291.0" promptText="Customer Email">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="deleteorderform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;">
+                  <AnchorPane fx:id="deleteorderform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-7.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="22.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1225.0" />

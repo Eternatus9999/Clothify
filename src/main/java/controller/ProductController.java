@@ -6,6 +6,8 @@ import service.custom.ProductBo;
 import service.custom.impl.ProductBoImpl;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProductController {
     private static ProductController instance;
@@ -117,6 +119,13 @@ public class ProductController {
 
     public List<Product> getProduct(){
         return productservice.getProduct();
+    }
+
+    public boolean UpdateItemQty(int qty,String id){
+        Product product = productservice.searchProduct(id);
+        product.setQty(product.getQty()+qty);
+        productservice.updateProduct(product);
+        return true;
     }
 
 

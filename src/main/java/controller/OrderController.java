@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.scene.control.Alert;
 import model.Order;
 import model.OrderDetails;
 import service.custom.OrderBo;
@@ -59,6 +60,10 @@ public class OrderController {
 
     }
 
+    public boolean DeleteOrder(Order order){
+        return orderservice.deleteOrder(order);
+    }
+
     public List<Order> getOrder(){
         return orderservice.getOrder();
     }
@@ -67,5 +72,17 @@ public class OrderController {
         List<Order> list = orderservice.getOrder();
         int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getOrid().split("OR"))[1])+1;
         return "OR"+id;
+    }
+
+    public void addCart(OrderDetails orderDetails){
+        orderservice.addOrderDetails(orderDetails);
+    }
+
+    public List<OrderDetails> deleteCart(Order order){
+        return orderservice.deleteOrderDetails(order.getOrid());
+    }
+
+    public Order SearchOrder(String id){
+        return orderservice.searchOrder(id);
     }
 }

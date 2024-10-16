@@ -14,6 +14,7 @@ import java.time.LocalDate;
 public class Order {
         private String orid;
         private String custname;
+        private String custemail;
         private String paymenttype;
         private double total;
         private double discount;

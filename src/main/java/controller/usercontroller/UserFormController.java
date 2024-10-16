@@ -32,6 +32,7 @@ public class UserFormController implements Initializable {
     private Supplier deletesupplier;
     private OrderDetails addproduct;
     private OrderDetails deleteitem;
+    private Order deleteorder;
 
     @FXML
     private AnchorPane addorderform;
@@ -92,6 +93,12 @@ public class UserFormController implements Initializable {
 
     @FXML
     private TextField o_id;
+
+    @FXML
+    private TextField o_u_email;
+
+    @FXML
+    private TextField o_email;
 
     @FXML
     private TableColumn o_id_col;
@@ -353,7 +360,13 @@ public class UserFormController implements Initializable {
 
     @FXML
     void DeleteOrderOnAction(ActionEvent event) {
-
+        if(deleteorder!=null){
+            UserController.getInstance().DeleteOrder(deleteorder);
+            setOrdertable();
+        }
+        else{
+            new Alert(Alert.AlertType.ERROR,"Select an Order to delete!").showAndWait();
+        }
     }
 
     @FXML
@@ -505,6 +518,7 @@ public class UserFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
 
+        setOrdertable();
         setProducttable();
     }
 
@@ -605,20 +619,22 @@ public class UserFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,"Select a Payment Method").showAndWait();
         }
         else{
-            if(OrderController.getInstance().PlaceOrder(new Order(
+            if(UserController.getInstance().PlaceOrder(new Order(
                             o_id.getText(),
                             o_name.getText(),
+                            o_email.getText(),
                             o_paymenttype.getValue(),
                             Double.parseDouble(totalprice.getText()),
                             0,
                             UserController.getInstance().getDate()
-                    )
+                    ),cart.getItems()
             )){
                 new Alert(Alert.AlertType.INFORMATION,"Order placed successfully").showAndWait();
                 additem(-1);
                 totalprice.setText(0+"");
                 o_name.setText(null);
                 o_paymenttype.setValue(null);
+                setProducttable();
                 o_id.setText(OrderController.getInstance().GenerateId());
             }
             else{
@@ -736,6 +752,10 @@ public class UserFormController implements Initializable {
         o_total_price_col.setCellValueFactory(new PropertyValueFactory<>("total"));
         o_date_col.setCellValueFactory(new PropertyValueFactory<>("date"));
 
+        s_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        s_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
+        s_company_col.setCellValueFactory(new PropertyValueFactory<>("company"));
+        s_contact_col.setCellValueFactory(new PropertyValueFactory<>("contact"));
 
         producttable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
             if(t1!=null){
@@ -775,11 +795,17 @@ public class UserFormController implements Initializable {
             }
         }));
 
+        d_ordertable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                deleteorder = (Order) t1;
+            }
+        }));
 
-        s_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
-        s_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
-        s_company_col.setCellValueFactory(new PropertyValueFactory<>("company"));
-        s_contact_col.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        o_u_id.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                setOrderDetails(t1);
+            }
+        }));
 
         suppliertable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
             if(t1!=null){
@@ -800,6 +826,7 @@ public class UserFormController implements Initializable {
         setProducttable();
         setPaymentType();
         o_id.setText(OrderController.getInstance().GenerateId());
+
     }
 
     private void setCategory(){
@@ -897,6 +924,7 @@ public class UserFormController implements Initializable {
         if(i == -1){
             cart.setItems(FXCollections.observableArrayList());
             cart.refresh();
+            OrderController.getInstance().getCart(-1);
         }else {
             if (addproduct==null) {
                 new Alert(Alert.AlertType.ERROR,"Select a Product to add").showAndWait();
@@ -936,7 +964,21 @@ public class UserFormController implements Initializable {
     }
 
     private void setOrdertable(){
+        List<Order> list = FXCollections.observableArrayList(OrderController.getInstance().getOrder());
+        List<String> idlist = new ArrayList<>();
         d_ordertable.setItems(FXCollections.observableArrayList(OrderController.getInstance().getOrder()));
+        list.forEach(order -> {
+            idlist.add(order.getOrid());
+        });
+        o_u_id.setItems(FXCollections.observableArrayList(idlist));
     }
+
+    private void setOrderDetails(String id){
+        Order order = OrderController.getInstance().SearchOrder(id);
+        o_u_name.setText(order.getCustname());
+        o_u_paymenttype.setValue(order.getPaymenttype());
+        o_u_email.setText(order.getCustemail());
+    }
+
 
 }

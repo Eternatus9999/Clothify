@@ -18,6 +18,7 @@ public class OrderEntity {
     @Id
     private String orid;
     private String custname;
+    private String custemail;
     private String paymenttype;
     private double total;
     private double discount;
