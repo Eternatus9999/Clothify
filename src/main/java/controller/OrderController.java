@@ -63,6 +63,10 @@ public class OrderController {
         return orderservice.deleteOrder(order);
     }
 
+    public Order SearchOrder(String id){
+        return orderservice.searchOrder(id);
+    }
+
     public List<Order> getOrder(){
         return orderservice.getOrder();
     }
@@ -81,7 +85,9 @@ public class OrderController {
         return orderservice.deleteOrderDetails(order.getOrid());
     }
 
-    public Order SearchOrder(String id){
-        return orderservice.searchOrder(id);
+    public List<OrderDetails> getorderdetails(String id){
+        return orderservice.searchOrderDetail(id);
     }
+
+
 }

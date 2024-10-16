@@ -35,6 +35,10 @@ public class UserController {
         });
         return true;
     }
+    public void SearchOrder(){
+
+    }
+
     public boolean DeleteOrder(Order order){
         new Alert(Alert.AlertType.CONFIRMATION,"Order Delete Successfully").showAndWait();
         OrderController.getInstance().DeleteOrder(order);

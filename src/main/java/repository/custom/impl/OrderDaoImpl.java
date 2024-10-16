@@ -46,10 +46,18 @@ public class OrderDaoImpl implements OrderDao {
         return session.get(OrderEntity.class,id);
     }
 
-
     public OrderEntity searchdetails(String id) {
         Session session = HibernateUtil.getOrderSession();
         return session.get(OrderEntity.class,id);
+    }
+
+    @Override
+    public List<OrderDetailsEntity> getalldetails(String id) {
+        Session session = HibernateUtil.getOrderDetailsSession();
+        session.beginTransaction();
+        List<OrderDetailsEntity> list = session.createQuery("from OrderDetailsEntity Where orid = \""+id+"\"",OrderDetailsEntity.class).list();
+        session.getTransaction().commit();
+        return list;
     }
 
     public boolean savedetails(OrderDetailsEntity entity){

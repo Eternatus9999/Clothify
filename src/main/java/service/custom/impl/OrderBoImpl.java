@@ -54,6 +54,17 @@ public class OrderBoImpl implements OrderBo {
     }
 
     @Override
+    public List<OrderDetails> searchOrderDetail(String id) {
+        OrderDao orderdao = DaoFactory.getInstance().getDaoType(DaoType.ORDER);
+        List<OrderDetailsEntity> templist =  orderdao.getalldetails(id);
+        List<OrderDetails> list = new ArrayList<>();
+        templist.forEach(entity -> {
+            list.add(new ModelMapper().map(entity,OrderDetails.class));
+        });
+        return list;
+    }
+
+    @Override
     public boolean deleteOrder(Order order) {
         OrderEntity entity = new ModelMapper().map(order,OrderEntity.class);
         OrderDao orderdao = DaoFactory.getInstance().getDaoType(DaoType.ORDER);

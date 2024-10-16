@@ -12,4 +12,5 @@ public interface OrderBo {
     Order searchOrder(String id);
     boolean addOrderDetails(OrderDetails orderDetails);
     List<OrderDetails> deleteOrderDetails(String id);
+    List<OrderDetails> searchOrderDetail(String id);
 }

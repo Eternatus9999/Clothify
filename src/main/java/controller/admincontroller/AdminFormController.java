@@ -255,12 +255,12 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void AddProductOnAction(ActionEvent event) {
-
+        setProductText();
     }
 
     @FXML
     void AddSupplierOnAction(ActionEvent event) {
-
+        setSuppliertext();
     }
 
     @FXML

@@ -978,6 +978,7 @@ public class UserFormController implements Initializable {
         o_u_name.setText(order.getCustname());
         o_u_paymenttype.setValue(order.getPaymenttype());
         o_u_email.setText(order.getCustemail());
+        u_cart.setItems(FXCollections.observableArrayList(OrderController.getInstance().getorderdetails(order.getOrid())));
     }
 
 
