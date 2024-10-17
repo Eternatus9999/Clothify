@@ -394,18 +394,21 @@ public class UserFormController implements Initializable {
     void DownloadEROnAction(ActionEvent event) {
         String text = EmployeeController.getInstance().GetReport();
         new CreatePdf().create(text,"EmployeeReport");
+        new Alert(Alert.AlertType.INFORMATION,"EmployeeReport Downloaded!").showAndWait();
     }
 
     @FXML
     void DownloadPROnAction(ActionEvent event) {
         String text = ProductController.getInstance().GetReport();
         new CreatePdf().create(text,"ProductReport");
+        new Alert(Alert.AlertType.INFORMATION,"ProductReport Downloaded!").showAndWait();
     }
 
     @FXML
     void DownloadSROnAction(ActionEvent event) {
         String text = SupplierController.getInstance().GetReport();
         new CreatePdf().create(text, "SupplierReport");
+        new Alert(Alert.AlertType.INFORMATION,"ProductReport Downloaded!").showAndWait();
     }
 
     @FXML
@@ -424,6 +427,11 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         setProducttable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setUpdateOrdertext();
         o_id.setText(OrderController.getInstance().GenerateId());
         additem(-1);
     }
@@ -444,6 +452,11 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         setSupplier();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -460,6 +473,12 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
+        setProductText();
+        setUpdateProductText();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
 
     }
 
@@ -479,6 +498,12 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         SetEmployeeChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -497,6 +522,12 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         SetProductChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -515,6 +546,12 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(true);
 
         SetSupplierChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -534,6 +571,11 @@ public class UserFormController implements Initializable {
 
         setOrdertable();
         setProducttable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
     }
 
     @FXML
@@ -554,6 +596,11 @@ public class UserFormController implements Initializable {
         setCategory();
         setSupplier();
         setProduct();
+        setProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -572,6 +619,11 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         setSupplier();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -590,6 +642,12 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         setOrdertable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -608,6 +666,12 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         setProducttable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -626,6 +690,12 @@ public class UserFormController implements Initializable {
         supplierreportform.setVisible(false);
 
         setSuppliertable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setOrdertext();
+        setUpdateOrdertext();
     }
 
     @FXML
@@ -650,6 +720,7 @@ public class UserFormController implements Initializable {
                 totalprice.setText(0+"");
                 o_name.setText(null);
                 o_paymenttype.setValue(null);
+                o_email.setText(null);
                 setProducttable();
                 o_id.setText(OrderController.getInstance().GenerateId());
             }
@@ -693,6 +764,7 @@ public class UserFormController implements Initializable {
                 o_u_name.setText(null);
                 o_u_paymenttype.setValue(null);
                 o_u_id.setValue(null);
+                o_u_email.setText(null);
                 setProducttable();
             }
             else{
@@ -719,7 +791,7 @@ public class UserFormController implements Initializable {
                     p_price.getText(),
                     p_category.getValue())){
 
-                setProductText();
+                setUpdateProductText();
                 p_id.setText(ProductController.getInstance().GenerateId());
             }
         }
@@ -922,6 +994,15 @@ public class UserFormController implements Initializable {
     }
 
     private void setProductText(){
+        p_supplier.setValue(null);
+        p_category.setValue(null);
+        p_name.setText(null);
+        p_price.setText(null);
+        p_qty.setText(null);
+        p_size.setText(null);
+    }
+
+    private void setUpdateProductText(){
         p_u_id.setValue(null);
         p_u_supplier.setValue(null);
         p_u_category.setValue(null);
@@ -929,12 +1010,6 @@ public class UserFormController implements Initializable {
         p_u_price.setText(null);
         p_u_qty.setText(null);
         p_u_size.setText(null);
-        p_supplier.setValue(null);
-        p_category.setValue(null);
-        p_name.setText(null);
-        p_price.setText(null);
-        p_qty.setText(null);
-        p_size.setText(null);
     }
 
     private void setSuppliertext(String id){
@@ -945,13 +1020,35 @@ public class UserFormController implements Initializable {
     }
 
     private void setSuppliertext(){
+        s_name.setText(null);
+        s_company.setText(null);
+        s_contact.setText(null);
+    }
+
+    private void setUpdateSuppliertext(){
         s_u_id.setValue(null);
         s_u_name.setText(null);
         s_u_company.setText(null);
         s_u_contact.setText(null);
-        s_name.setText(null);
-        s_company.setText(null);
-        s_contact.setText(null);
+    }
+
+    private void setOrdertext(){
+        o_email.setText(null);
+        o_paymenttype.setValue(null);
+        o_name.setText(null);
+        qty.setText(null);
+        discount.setText(null);
+        totalprice.setText(null);
+    }
+
+    private void setUpdateOrdertext(){
+        o_u_email.setText(null);
+        o_u_paymenttype.setValue(null);
+        o_u_id.setValue(null);
+        o_u_name.setText(null);
+        u_qty.setText(null);
+        u_discount.setText(null);
+        u_totalprice.setText(null);
     }
 
     private void setPaymentType(){

@@ -2,6 +2,7 @@ package controller.admincontroller;
 
 
 import controller.EmployeeController;
+import controller.OrderController;
 import controller.ProductController;
 import controller.SupplierController;
 import controller.maincontroller.MainController;
@@ -81,10 +82,10 @@ public class AdminFormController implements Initializable {
     private TableColumn e_name_col;
 
     @FXML
-    private TextField e_password;
+    private PasswordField e_password;
 
     @FXML
-    private TextField e_re_password;
+    private PasswordField e_re_password;
 
     @FXML
     private TextField e_u_address;
@@ -102,10 +103,10 @@ public class AdminFormController implements Initializable {
     private TextField e_u_name;
 
     @FXML
-    private TextField e_u_password;
+    private PasswordField e_u_password;
 
     @FXML
-    private TextField e_u_re_password;
+    private PasswordField e_u_re_password;
 
     @FXML
     private AnchorPane employeereportform;
@@ -328,22 +329,33 @@ public class AdminFormController implements Initializable {
     void DownloadEROnAction(ActionEvent event) {
         String text = EmployeeController.getInstance().GetReport();
         new CreatePdf().create(text,"EmployeeReport");
+        new Alert(Alert.AlertType.INFORMATION,"EmployeeReport Downloaded!").showAndWait();
     }
 
     @FXML
     void DownloadPROnAction(ActionEvent event) {
         String text = ProductController.getInstance().GetReport();
         new CreatePdf().create(text,"ProductReport");
+        new Alert(Alert.AlertType.INFORMATION,"ProductReport Downloaded!").showAndWait();
     }
 
     @FXML
     void DownloadSROnAction(ActionEvent event) {
         String text = SupplierController.getInstance().GetReport();
         new CreatePdf().create(text, "SupplierReport");
+        new Alert(Alert.AlertType.INFORMATION,"SupplierReport Downloaded!").showAndWait();
     }
 
     @FXML
     void DownloadSsROnAction(ActionEvent event) {
+        if(salesreporttype.getValue()==null){
+            new Alert(Alert.AlertType.ERROR,"Select a Salse Report Type").showAndWait();
+        }
+        else{
+            String text = OrderController.getInstance().GetReport(salesreporttype.getValue());
+            new CreatePdf().create(text,salesreporttype.getValue());
+            new Alert(Alert.AlertType.INFORMATION,salesreporttype.getValue()+" Downloaded!").showAndWait();
+        }
 
     }
 
@@ -362,6 +374,12 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -382,6 +400,11 @@ public class AdminFormController implements Initializable {
 
         setCategory();
         setSupplier();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -399,6 +422,12 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setProductText();
+        setUpdateProductText();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -418,6 +447,12 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         SetEmployeeChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -437,6 +472,12 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         SetProductChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -454,6 +495,15 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(true);
+
+        SetReportType();
+        SetSalseChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -473,6 +523,12 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         SetSupplierChart();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -492,6 +548,11 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         setEmployee();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
     }
 
     @FXML
@@ -513,6 +574,11 @@ public class AdminFormController implements Initializable {
         setCategory();
         setSupplier();
         setProduct();
+        setProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -532,6 +598,11 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         setSupplier();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -551,6 +622,12 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         setEmployeetable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -570,6 +647,12 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         setProducttable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -589,6 +672,12 @@ public class AdminFormController implements Initializable {
         salesreportform.setVisible(false);
 
         setSuppliertable();
+        setProductText();
+        setUpdateProductText();
+        setSuppliertext();
+        setUpdateSuppliertext();
+        setEmployeetext();
+        setUpadateEmployeetext();
     }
 
     @FXML
@@ -615,7 +704,7 @@ public class AdminFormController implements Initializable {
                     p_price.getText(),
                     p_category.getValue())){
 
-                setProductText();
+                setUpdateProductText();
                 p_id.setText(ProductController.getInstance().GenerateId());
             }
         }
@@ -771,6 +860,15 @@ public class AdminFormController implements Initializable {
     }
 
     private void setProductText(){
+        p_supplier.setValue(null);
+        p_category.setValue(null);
+        p_name.setText(null);
+        p_price.setText(null);
+        p_qty.setText(null);
+        p_size.setText(null);
+    }
+
+    private void setUpdateProductText(){
         p_u_id.setValue(null);
         p_u_supplier.setValue(null);
         p_u_category.setValue(null);
@@ -778,12 +876,6 @@ public class AdminFormController implements Initializable {
         p_u_price.setText(null);
         p_u_qty.setText(null);
         p_u_size.setText(null);
-        p_supplier.setValue(null);
-        p_category.setValue(null);
-        p_name.setText(null);
-        p_price.setText(null);
-        p_qty.setText(null);
-        p_size.setText(null);
     }
 
     private void setSuppliertext(String id){
@@ -794,13 +886,16 @@ public class AdminFormController implements Initializable {
     }
 
     private void setSuppliertext(){
+        s_name.setText(null);
+        s_company.setText(null);
+        s_contact.setText(null);
+    }
+
+    private void setUpdateSuppliertext(){
         s_u_id.setValue(null);
         s_u_name.setText(null);
         s_u_company.setText(null);
         s_u_contact.setText(null);
-        s_name.setText(null);
-        s_company.setText(null);
-        s_contact.setText(null);
     }
 
     private void setEmployeetext(String id){
@@ -812,18 +907,21 @@ public class AdminFormController implements Initializable {
     }
 
     private void setEmployeetext(){
-        e_u_name.setText(null);
-        e_u_address.setText(null);
-        e_u_contact.setText(null);
-        e_u_email.setText(null);
-        e_u_password.setText(null);
-        e_u_re_password.setText(null);
         e_name.setText(null);
         e_address.setText(null);
         e_contact.setText(null);
         e_email.setText(null);
         e_password.setText(null);
         e_re_password.setText(null);
+    }
+
+    private void setUpadateEmployeetext(){
+        e_u_name.setText(null);
+        e_u_address.setText(null);
+        e_u_contact.setText(null);
+        e_u_email.setText(null);
+        e_u_password.setText(null);
+        e_u_re_password.setText(null);
     }
 
     private void SetProductChart(){
@@ -882,6 +980,27 @@ public class AdminFormController implements Initializable {
             );
         });
         employeereportpiechart.getData().addAll(pieChartData);
+    }
+
+    private void SetReportType(){
+        List<String> list = new ArrayList<>();
+        list.add("Daily");
+        list.add("Monthly");
+        list.add("Annual");
+        salesreporttype.setItems(FXCollections.observableArrayList(list));
+    }
+
+    private void SetSalseChart(){
+        salesreportchart.getData().clear();
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(OrderController.getInstance().getData());
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        salesreportchart.getData().addAll(pieChartData);
     }
 
 }

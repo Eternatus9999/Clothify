@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -316,7 +317,7 @@
                         <PieChart fx:id="employeereportpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;">
+                  <AnchorPane fx:id="addemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -325,11 +326,6 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="e_password" layoutX="320.0" layoutY="447.0" prefHeight="74.0" prefWidth="702.0" promptText="Password">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </TextField>
                         <TextField fx:id="e_contact" layoutX="321.0" layoutY="353.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
                            <font>
                               <Font size="36.0" />
@@ -350,14 +346,19 @@
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_re_password" layoutX="320.0" layoutY="543.0" prefHeight="74.0" prefWidth="702.0" promptText="Re-Password">
+                        <PasswordField fx:id="e_password" layoutX="320.0" layoutY="447.0" prefHeight="78.0" prefWidth="702.0" promptText="Password">
                            <font>
                               <Font size="36.0" />
                            </font>
-                        </TextField>
+                        </PasswordField>
+                        <PasswordField fx:id="e_re_password" layoutX="317.0" layoutY="543.0" prefHeight="78.0" prefWidth="705.0" promptText="Re-type Password">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </PasswordField>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="updateemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="updateemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -366,11 +367,6 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="e_u_password" layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Password">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </TextField>
                         <TextField fx:id="e_u_contact" layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
                            <font>
                               <Font size="36.0" />
@@ -391,12 +387,17 @@
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_u_re_password" layoutX="320.0" layoutY="587.0" prefHeight="74.0" prefWidth="702.0" promptText="Re-Password">
+                        <ComboBox fx:id="e_u_id" layoutX="322.0" layoutY="32.0" prefHeight="75.0" prefWidth="703.0" promptText="ID" />
+                        <PasswordField fx:id="e_u_password" layoutX="318.0" layoutY="491.0" prefHeight="77.0" prefWidth="705.0" promptText="Password">
                            <font>
                               <Font size="36.0" />
                            </font>
-                        </TextField>
-                        <ComboBox fx:id="e_u_id" layoutX="322.0" layoutY="32.0" prefHeight="75.0" prefWidth="703.0" promptText="ID" />
+                        </PasswordField>
+                        <PasswordField fx:id="e_u_re_password" layoutX="318.0" layoutY="587.0" prefHeight="77.0" prefWidth="704.0" promptText="Re-type Password">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </PasswordField>
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="deleteemployeeform" layoutX="215.0" prefHeight="809.0" prefWidth="1331.0" style="-fx-background-color: #000000;" visible="false">

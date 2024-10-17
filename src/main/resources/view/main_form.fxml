@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -15,15 +16,13 @@
             <Font name="System Bold Italic" size="72.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="registerform" layoutY="93.0" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;" visible="false">
+      <AnchorPane fx:id="registerform" layoutY="93.0" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;">
          <children>
             <TextField fx:id="name" layoutX="153.0" layoutY="6.0" prefHeight="33.0" prefWidth="305.0" promptText="Name" />
             <TextField fx:id="contact" layoutX="153.0" layoutY="44.0" prefHeight="33.0" prefWidth="305.0" promptText="Phone Number" />
             <TextField fx:id="email" layoutX="153.0" layoutY="82.0" prefHeight="33.0" prefWidth="305.0" promptText="Email" />
             <TextField fx:id="adress" layoutX="153.0" layoutY="120.0" prefHeight="33.0" prefWidth="305.0" promptText="Address" />
-            <TextField fx:id="password" layoutX="153.0" layoutY="158.0" prefHeight="33.0" prefWidth="305.0" promptText="Password" />
-            <TextField fx:id="checkpassword" layoutX="153.0" layoutY="196.0" prefHeight="33.0" prefWidth="305.0" promptText="Re-Password" />
-            <Button layoutX="195.0" layoutY="242.0" mnemonicParsing="false" onAction="#RegisterOnAction" prefHeight="52.0" prefWidth="216.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Register">
+            <Button layoutX="195.0" layoutY="248.0" mnemonicParsing="false" onAction="#RegisterOnAction" prefHeight="52.0" prefWidth="216.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Register">
                <font>
                   <Font size="24.0" />
                </font>
@@ -33,11 +32,12 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
+            <PasswordField fx:id="checkpassword" layoutX="152.0" layoutY="202.0" prefHeight="39.0" prefWidth="305.0" promptText="Re-type Password" />
+            <PasswordField fx:id="password" layoutX="152.0" layoutY="158.0" prefHeight="39.0" prefWidth="305.0" promptText="Password" />
          </children></AnchorPane>
       <AnchorPane fx:id="loginform" layoutY="93.0" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;" visible="false">
          <children>
-            <TextField fx:id="emaillog" layoutX="151.0" layoutY="40.0" prefHeight="33.0" prefWidth="305.0" promptText="Email" />
-            <TextField fx:id="passwordlog" layoutX="151.0" layoutY="96.0" prefHeight="33.0" prefWidth="305.0" promptText="Password" />
+            <TextField fx:id="emaillog" layoutX="151.0" layoutY="40.0" prefHeight="33.0" prefWidth="305.0" promptText="ID" />
             <Button layoutX="195.0" layoutY="242.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="52.0" prefWidth="216.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Login">
                <font>
                   <Font size="24.0" />
@@ -53,12 +53,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <PasswordField fx:id="passwordlog" layoutX="151.0" layoutY="108.0" prefHeight="33.0" prefWidth="305.0" promptText="Password" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="forgotpasswordform" layoutY="93.0" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;" visible="false">
          <children>
-            <TextField fx:id="newpassword" layoutX="151.0" layoutY="95.0" prefHeight="33.0" prefWidth="305.0" promptText="New Password" />
-            <TextField fx:id="newpasswordcheck" layoutX="151.0" layoutY="151.0" prefHeight="33.0" prefWidth="305.0" promptText="Re-Password" />
             <Button layoutX="195.0" layoutY="242.0" mnemonicParsing="false" onAction="#DoneOnAction" prefHeight="52.0" prefWidth="216.0" styleClass="Normalbtn" stylesheets="@../css/Style.css" text="Done">
                <font>
                   <Font size="24.0" />
@@ -74,6 +73,8 @@
                   <Font size="36.0" />
                </font>
             </Label>
+            <PasswordField fx:id="newpassword" layoutX="151.0" layoutY="98.0" prefHeight="33.0" prefWidth="305.0" promptText="New Password" />
+            <PasswordField fx:id="newpasswordcheck" layoutX="151.0" layoutY="157.0" prefHeight="33.0" prefWidth="305.0" promptText="Re-type New Password" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="mainform" layoutX="-4.0" layoutY="93.0" prefHeight="313.0" prefWidth="600.0" style="-fx-background-color: #000000;" visible="false">

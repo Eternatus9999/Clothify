@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -19,7 +20,7 @@ public class MainFormController implements Initializable {
     private TextField adress;
 
     @FXML
-    private TextField checkpassword;
+    private PasswordField checkpassword;
 
     @FXML
     private TextField contact;
@@ -43,16 +44,16 @@ public class MainFormController implements Initializable {
     private TextField name;
 
     @FXML
-    private TextField newpassword;
+    private PasswordField newpassword;
 
     @FXML
-    private TextField newpasswordcheck;
+    private PasswordField newpasswordcheck;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
-    private TextField passwordlog;
+    private PasswordField passwordlog;
 
     @FXML
     private AnchorPane registerform;

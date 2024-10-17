@@ -1,10 +1,13 @@
 package controller;
 
+import controller.usercontroller.UserController;
+import javafx.scene.chart.PieChart;
 import model.Order;
 import model.OrderDetails;
 import service.custom.OrderBo;
 import service.custom.impl.OrderBoImpl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +90,60 @@ public class OrderController {
             setTotal(orderDetails.getPrice());
         });
         return cart;
+    }
+
+    public String GetReport(String type){
+        String text =" \t\t\t\t\t\t\t\t\t\t\t\tSALSE REPORT\n\n\nOrder\t\tCustomer\t\tDiscount\t\tPrice\n";
+        LocalDate date = UserController.getInstance().getDate();
+        String[] list = date.toString().split("-");
+        List<Order> orderlist = OrderController.getInstance().getOrder();
+        if(type.equals("Daily")){
+            for (int i = 0; i < orderlist.size(); i++){
+                if(orderlist.get(i).getDate().toString().split("-")[2].equals(list[2])){
+                    text += orderlist.get(i).getOrid()+"\t\t\t"+orderlist.get(i).getCustname()+"\t\t"+orderlist.get(i).getDiscount()+"\t\t\t"+orderlist.get(i).getTotal()+"\n";
+                }
+            }
+        } else if (type.equals("Monthly")) {
+            for (int i = 0; i < orderlist.size(); i++){
+                if(orderlist.get(i).getDate().toString().split("-")[1].equals(list[1])){
+                    text += orderlist.get(i).getOrid()+"\t\t\t"+orderlist.get(i).getCustname()+"\t\t"+orderlist.get(i).getDiscount()+"\t\t\t"+orderlist.get(i).getTotal()+"\n";
+                }
+            }
+            
+        } else if (type.equals("Annual")) {
+            for (int i = 0; i < orderlist.size(); i++){
+                if(orderlist.get(i).getDate().toString().split("-")[0].equals(list[0])){
+                    text += orderlist.get(i).getOrid()+"\t\t\t"+orderlist.get(i).getCustname()+"\t\t"+orderlist.get(i).getDiscount()+"\t\t\t"+orderlist.get(i).getTotal()+"\n";
+                }
+            }
+
+        }
+        return text;
+    }
+
+    public List<PieChart.Data> getData(){
+        List<PieChart.Data> list = new ArrayList<>();
+        List<Order> orderlist = OrderController.instance.getOrder();
+        double gentqty =0;
+        double ladiesqty =0;
+        double kidsqty =0;
+        for (int i = 0; i <orderlist.size(); i++) {
+            List<OrderDetails> orderDetailsList = OrderController.getInstance().getorderdetails(orderlist.get(i).getOrid());
+            for (int j = 0; j <orderDetailsList.size(); j++) {
+                if(ProductController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Gents")){
+                    gentqty+=orderDetailsList.get(j).getQty();
+                }else if(ProductController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Ladies")){
+                    ladiesqty+=orderDetailsList.get(j).getQty();
+                }else if(ProductController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Kids")){
+                    kidsqty+=orderDetailsList.get(j).getQty();
+                }
+            }
+        }
+        list.add(new PieChart.Data("Gents",gentqty));
+        list.add(new PieChart.Data("Ladies",ladiesqty));
+        list.add(new PieChart.Data("Kids",kidsqty));
+
+        return list;
     }
 
 
