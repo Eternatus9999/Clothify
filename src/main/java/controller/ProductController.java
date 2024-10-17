@@ -1,13 +1,14 @@
 package controller;
 
+
 import javafx.scene.control.Alert;
+
 import model.Product;
 import service.custom.ProductBo;
 import service.custom.impl.ProductBoImpl;
 
+
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ProductController {
     private static ProductController instance;
@@ -150,5 +151,12 @@ public class ProductController {
         return total;
     }
 
-
+    public String GetReport(){
+        String text =" \t\t\t\t\t\t\t\t\t\t\t\tPRODUCT REPORT\n\n\nProduct\t\tQty\t\t  \tPrice\t\t\t\tTotal Price\n";
+        List<Product> list =  ProductController.getInstance().getProduct();
+        for (int i = 0; i <list.size(); i++) {
+            text += list.get(i).getId()+"\t\t\t\t"+list.get(i).getQty()+"\t\t\t\t"+list.get(i).getPrice()+"\t\t\t\t"+list.get(i).getPrice()*list.get(i).getQty()+"\n";
+        }
+        return text;
+    }
 }

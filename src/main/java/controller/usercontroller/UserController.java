@@ -14,8 +14,16 @@ import java.util.List;
 public class UserController {
     private static UserController instance;
 
+    public static String employee;
+
+    private UserController(String employee){
+        UserController.employee = employee;
+    }
     private UserController(){}
 
+    public static UserController getInstance(String employee){
+        return instance==null?instance= new UserController(employee):instance;
+    }
     public static UserController getInstance(){
         return instance==null?instance= new UserController():instance;
     }
@@ -39,10 +47,6 @@ public class UserController {
         return true;
     }
 
-    public void SearchOrder(){
-
-    }
-
     public boolean DeleteOrder(Order order){
         OrderController.getInstance().DeleteOrder(order);
         List<OrderDetails> list = OrderController.getInstance().deleteCart(order);
@@ -62,6 +66,5 @@ public class UserController {
         text+="----------------------------------\n\t\t\t\t\t\t\t"+total+"\n\n\n\t\tThank you for Purchasing!";
         return text;
     }
-
 
 }

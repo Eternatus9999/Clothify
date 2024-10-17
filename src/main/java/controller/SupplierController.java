@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.scene.control.Alert;
+import model.Product;
 import model.Supplier;
 import service.custom.SupplierBo;
 import service.custom.impl.SupplierBoImpl;
@@ -73,5 +74,14 @@ public class SupplierController {
         List<Supplier> list = supplierservice.getSupplier();
         int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("S"))[1])+1;
         return "S"+id;
+    }
+
+    public String GetReport(){
+        String text =" \t\t\t\t\t\t\t\t\t\t\t\tSUPPLIER REPORT\n\n\nProduct\t\tSupplier\t\tOrder Qty\n";
+        List<Product> list =  ProductController.getInstance().getProduct();
+        for (int i = 0; i <list.size(); i++) {
+            text += list.get(i).getId()+"\t\t\t\t"+list.get(i).getSupplier()+"\t\t\t\t"+list.get(i).getQty()+"\n";
+        }
+        return text;
     }
 }

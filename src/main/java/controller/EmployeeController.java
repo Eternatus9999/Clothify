@@ -1,11 +1,15 @@
 package controller;
 
 import controller.maincontroller.MainController;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import model.Employee;
+import model.Order;
 import service.custom.EmployeeBo;
 import service.custom.impl.EmployeeBoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -124,6 +128,37 @@ public class EmployeeController {
 
     public List<Employee> GetEmployee(){
         return employeeservice.getEmployee();
+    }
+
+    public List<PieChart.Data> getEmployeeData(){
+        List<PieChart.Data> list = new ArrayList<>();
+
+        List<Order> orderlist = OrderController.getInstance().getOrder();
+        for (int i = 0; i < orderlist.size(); i++) {
+            int qty =0;
+            for (int j = i; j < orderlist.size(); j++) {
+                if(orderlist.get(i).getEmployeeid().equals(orderlist.get(j).getEmployeeid())){
+                    qty++;
+                }
+            }
+            list.add(new PieChart.Data(orderlist.get(i).getEmployeeid(),qty));
+        }
+        return list;
+    }
+
+    public String GetReport(){
+        String text =" \t\t\t\t\t\t\t\t\t\t\t\tEMPLOYEE REPORT\n\n\nEmployee\t\tOrders Sold\n";
+        List<Order> orderlist = OrderController.getInstance().getOrder();
+        for (int i = 0; i < orderlist.size(); i++) {
+            int qty =0;
+            for (int j = i; j < orderlist.size(); j++) {
+                if(orderlist.get(i).getEmployeeid().equals(orderlist.get(j).getEmployeeid())){
+                    qty++;
+                }
+            }
+            text += orderlist.get(i).getEmployeeid()+"\t\t\t\t"+qty+"\n";
+        }
+        return text;
     }
 
 }

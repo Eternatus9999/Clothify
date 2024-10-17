@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import model.Employee;
 import model.Product;
 import model.Supplier;
+import util.CreatePdf;
 
 import java.io.IOException;
 import java.net.URL;
@@ -325,17 +326,20 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void DownloadEROnAction(ActionEvent event) {
-
+        String text = EmployeeController.getInstance().GetReport();
+        new CreatePdf().create(text,"EmployeeReport");
     }
 
     @FXML
     void DownloadPROnAction(ActionEvent event) {
-
+        String text = ProductController.getInstance().GetReport();
+        new CreatePdf().create(text,"ProductReport");
     }
 
     @FXML
     void DownloadSROnAction(ActionEvent event) {
-
+        String text = SupplierController.getInstance().GetReport();
+        new CreatePdf().create(text, "SupplierReport");
     }
 
     @FXML
@@ -412,6 +416,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        SetEmployeeChart();
     }
 
     @FXML
@@ -863,7 +869,19 @@ public class AdminFormController implements Initializable {
     }
 
     private void SetEmployeeChart(){
+        employeereportpiechart.getData().clear();
 
+        List<PieChart.Data> list = EmployeeController.getInstance().getEmployeeData();
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(list);
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        employeereportpiechart.getData().addAll(pieChartData);
     }
 
 }

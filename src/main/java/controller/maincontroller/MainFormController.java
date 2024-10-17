@@ -105,6 +105,10 @@ public class MainFormController implements Initializable {
     @FXML
     void RegisterOnAction(ActionEvent event) {
         EmployeeController.getInstance().AddEmployee(name.getText(),email.getText(),adress.getText(),password.getText(),checkpassword.getText(),contact.getText());
+        mainform.setVisible(true);
+        forgotpasswordform.setVisible(false);
+        loginform.setVisible(false);
+        registerform.setVisible(false);
     }
 
     @Override

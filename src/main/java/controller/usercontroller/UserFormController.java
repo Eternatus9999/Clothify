@@ -1,5 +1,6 @@
 package controller.usercontroller;
 
+import controller.EmployeeController;
 import controller.OrderController;
 import controller.ProductController;
 import controller.SupplierController;
@@ -12,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -22,6 +22,7 @@ import model.Order;
 import model.OrderDetails;
 import model.Product;
 import model.Supplier;
+import util.CreatePdf;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,7 +72,7 @@ public class UserFormController implements Initializable {
     private AnchorPane employeereportform;
 
     @FXML
-    private LineChart employeereportpiechart;
+    private PieChart employeereportpiechart;
 
     @FXML
     private TableColumn item_category_col;
@@ -391,17 +392,20 @@ public class UserFormController implements Initializable {
 
     @FXML
     void DownloadEROnAction(ActionEvent event) {
-
+        String text = EmployeeController.getInstance().GetReport();
+        new CreatePdf().create(text,"EmployeeReport");
     }
 
     @FXML
     void DownloadPROnAction(ActionEvent event) {
-
+        String text = ProductController.getInstance().GetReport();
+        new CreatePdf().create(text,"ProductReport");
     }
 
     @FXML
     void DownloadSROnAction(ActionEvent event) {
-
+        String text = SupplierController.getInstance().GetReport();
+        new CreatePdf().create(text, "SupplierReport");
     }
 
     @FXML
@@ -473,6 +477,8 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(true);
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
+
+        SetEmployeeChart();
     }
 
     @FXML
@@ -635,7 +641,8 @@ public class UserFormController implements Initializable {
                             o_paymenttype.getValue(),
                             Double.parseDouble(totalprice.getText()),
                             0,
-                            UserController.getInstance().getDate()
+                            UserController.getInstance().getDate(),
+                            UserController.employee
                     ),cart.getItems()
             )){
                 new Alert(Alert.AlertType.INFORMATION,"Order placed successfully").showAndWait();
@@ -676,7 +683,8 @@ public class UserFormController implements Initializable {
                             o_u_paymenttype.getValue(),
                             Double.parseDouble(u_totalprice.getText()),
                             0,
-                            UserController.getInstance().getDate()
+                            UserController.getInstance().getDate(),
+                            UserController.employee
                     ),u_cart.getItems()
             )){
                 new Alert(Alert.AlertType.INFORMATION,"Order updated successfully").showAndWait();
@@ -1100,6 +1108,22 @@ public class UserFormController implements Initializable {
             );
         });
         supplierpiechart.getData().addAll(pieChartData);
+    }
+
+    private void SetEmployeeChart(){
+        employeereportpiechart.getData().clear();
+
+        List<PieChart.Data> list = EmployeeController.getInstance().getEmployeeData();
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(list);
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        employeereportpiechart.getData().addAll(pieChartData);
     }
 
 }

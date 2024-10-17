@@ -23,4 +23,5 @@ public class OrderEntity {
     private double total;
     private double discount;
     private LocalDate date;
+    private String employeeid;
 }

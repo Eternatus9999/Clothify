@@ -1,5 +1,6 @@
 package controller.maincontroller;
 
+import controller.usercontroller.UserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -45,6 +46,7 @@ public class MainController {
             NavigatetoAdminInterface();
         }
         else if(password.contains("User")){
+            UserController.getInstance(username);
             NavigatetoUserInterface();
         }
         else{

@@ -21,4 +21,20 @@ public class CreatePdf {
         }
         return null;
     }
+
+    public String create(String text,String heading) {
+        try {
+            String dest = heading+".pdf";
+            PdfWriter writer = new PdfWriter(dest);
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+            document.add(new Paragraph(text));
+            document.close();
+            return dest;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
