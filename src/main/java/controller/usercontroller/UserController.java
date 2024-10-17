@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import model.Order;
 import model.OrderDetails;
+import util.CreatePdf;
 import util.EmailSender;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +37,8 @@ public class UserController {
         });
         String subject = "Clothify Order Number: "+order.getOrid();
         String text = GenerateBill(list);
-        EmailSender.create(order.getCustemail(), subject, text);
+        String file = new CreatePdf().create(text);
+        EmailSender.create(order.getCustemail(), subject, " Name: "+order.getCustname()+"\nTotal : "+order.getTotal(),file);
         return true;
     }
 

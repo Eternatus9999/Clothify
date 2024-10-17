@@ -2,25 +2,26 @@ package util;
 
 
 import jakarta.activation.DataSource;
+import jakarta.activation.FileDataSource;
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.api.mailer.config.TransportStrategy;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
 
-
+import java.io.File;
 
 
 public class EmailSender {
 
-    public static void create(String to, String subject, String text, DataSource file) {
+    public static void create(String to, String subject, String text, String file) {
         try {
             Email email = EmailBuilder.startingBlank()
                     .from("emailsendchathushapehemina@gmail.com")
                     .to(to)
                     .withSubject(subject)
                     .withPlainText(text)
-                    .withAttachment("Bill",file)
+                    .withAttachment("Bill.pdf",  new FileDataSource(file))
                     .buildEmail();
 
             Mailer mailer = MailerBuilder
