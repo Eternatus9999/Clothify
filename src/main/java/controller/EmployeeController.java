@@ -8,6 +8,7 @@ import model.Employee;
 import model.Order;
 import service.custom.EmployeeBo;
 import service.custom.impl.EmployeeBoImpl;
+import util.Encryptor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class EmployeeController {
         }
         else {
             String id = GenerateId();
-            if(employeeservice.addEmployee(new Employee(id, name, phone, email, address, password))){
+            if(employeeservice.addEmployee(new Employee(id, name, phone, email, address, new Encryptor().encryptString(password)))){
                 new Alert(Alert.AlertType.INFORMATION,"Employee added Successfully!").showAndWait();
             }
             else{
@@ -107,7 +108,7 @@ public class EmployeeController {
         }
         else {
             String id = GenerateId();
-            if(employeeservice.updateEmployee(new Employee(id, name, phone, email, address, password))){
+            if(employeeservice.updateEmployee(new Employee(id, name, phone, email, address,new Encryptor().encryptString(password)))){
                 new Alert(Alert.AlertType.INFORMATION,"Employee updated Successfully!").showAndWait();
 
             }
