@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import model.Order;
 import model.OrderDetails;
+import util.EmailSender;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -33,8 +34,12 @@ public class UserController {
             OrderController.getInstance().addCart((OrderDetails) o);
             ProductController.getInstance().UpdateItemQty(((OrderDetails) o).getQty()*-1,((OrderDetails) o).getId());
         });
+        String subject = "Clothify Order Number: "+order.getOrid();
+        String text = GenerateBill(list);
+        EmailSender.create(order.getCustemail(), subject, text);
         return true;
     }
+
     public void SearchOrder(){
 
     }
@@ -46,6 +51,17 @@ public class UserController {
             ProductController.getInstance().UpdateItemQty(orderDetails.getQty(),orderDetails.getId());
         });
         return true;
+    }
+
+    public String GenerateBill(ObservableList list){
+        String text = "Item Name      Qty          Price\n";
+        double total = 0;
+        for (int i = 0; i <list.size(); i++) {
+            text +=((OrderDetails)list.get(i)).getName()+"\t\t\t"+((OrderDetails)list.get(i)).getQty()+"\t\t\t"+((OrderDetails)list.get(i)).getPrice()+"\n";
+            total+=((OrderDetails)list.get(i)).getPrice();
+        }
+        text+="----------------------------------\n\t\t\t\t\t\t\t"+total+"\n\n\n\t\tThank you for Purchasing!";
+        return text;
     }
 
 }
