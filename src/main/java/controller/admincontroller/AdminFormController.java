@@ -5,7 +5,9 @@ import controller.EmployeeController;
 import controller.ProductController;
 import controller.SupplierController;
 import controller.maincontroller.MainController;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -427,6 +429,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(true);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        SetProductChart();
     }
 
     @FXML
@@ -461,6 +465,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(true);
         salesreportform.setVisible(false);
+
+        SetSupplierChart();
     }
 
     @FXML
@@ -814,5 +820,50 @@ public class AdminFormController implements Initializable {
         e_re_password.setText(null);
     }
 
+    private void SetProductChart(){
+        productreportpiechart.getData().clear();
+        double ladies = ProductController.getInstance().getData("Ladies");
+        double gents = ProductController.getInstance().getData("Gents");
+        double kids = ProductController.getInstance().getData("Kids");
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Ladies",ladies),
+                new PieChart.Data("Gents",gents),
+                new PieChart.Data("Kids",kids)
+        );
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        productreportpiechart.getData().addAll(pieChartData);
+    }
+
+    private void SetSupplierChart(){
+        supplierpiechart.getData().clear();
+        double ladies = ProductController.getInstance().getSupplierData("Ladies");
+        double gents = ProductController.getInstance().getSupplierData("Gents");
+        double kids = ProductController.getInstance().getSupplierData("Kids");
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Ladies",ladies),
+                new PieChart.Data("Gents",gents),
+                new PieChart.Data("Kids",kids)
+        );
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        supplierpiechart.getData().addAll(pieChartData);
+    }
+
+    private void SetEmployeeChart(){
+
+    }
 
 }

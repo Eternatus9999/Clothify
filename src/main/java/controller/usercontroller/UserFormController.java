@@ -4,12 +4,15 @@ import controller.OrderController;
 import controller.ProductController;
 import controller.SupplierController;
 import controller.maincontroller.MainController;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -68,7 +71,7 @@ public class UserFormController implements Initializable {
     private AnchorPane employeereportform;
 
     @FXML
-    private PieChart employeereportpiechart;
+    private LineChart employeereportpiechart;
 
     @FXML
     private TableColumn item_category_col;
@@ -486,6 +489,8 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(true);
         supplierreportform.setVisible(false);
+
+        SetProductChart();
     }
 
     @FXML
@@ -502,6 +507,8 @@ public class UserFormController implements Initializable {
         employeereportform.setVisible(false);
         productreportform.setVisible(false);
         supplierreportform.setVisible(true);
+
+        SetSupplierChart();
     }
 
     @FXML
@@ -1051,6 +1058,48 @@ public class UserFormController implements Initializable {
         u_totalprice.setText(order.getTotal()+"");
         o_u_email.setText(order.getCustemail());
         u_cart.setItems(FXCollections.observableArrayList(OrderController.getInstance().getorderdetails(order.getOrid())));
+    }
+
+    private void SetProductChart(){
+        productreportpiechart.getData().clear();
+        double ladies = ProductController.getInstance().getData("Ladies");
+        double gents = ProductController.getInstance().getData("Gents");
+        double kids = ProductController.getInstance().getData("Kids");
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Ladies",ladies),
+                new PieChart.Data("Gents",gents),
+                new PieChart.Data("Kids",kids)
+        );
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        productreportpiechart.getData().addAll(pieChartData);
+    }
+
+    private void SetSupplierChart(){
+        supplierpiechart.getData().clear();
+        double ladies = ProductController.getInstance().getSupplierData("Ladies");
+        double gents = ProductController.getInstance().getSupplierData("Gents");
+        double kids = ProductController.getInstance().getSupplierData("Kids");
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Ladies",ladies),
+                new PieChart.Data("Gents",gents),
+                new PieChart.Data("Kids",kids)
+        );
+        pieChartData.forEach(data -> {
+            data.nameProperty().bind(
+                    Bindings.concat(
+                            data.getName()," amount: ",data.pieValueProperty()
+                    )
+            );
+        });
+        supplierpiechart.getData().addAll(pieChartData);
     }
 
 }

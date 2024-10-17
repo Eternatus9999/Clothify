@@ -3,11 +3,8 @@ package controller.usercontroller;
 import controller.OrderController;
 import controller.ProductController;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
 import model.Order;
 import model.OrderDetails;
-import util.CreatePdf;
-import util.EmailSender;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -65,5 +62,6 @@ public class UserController {
         text+="----------------------------------\n\t\t\t\t\t\t\t"+total+"\n\n\n\t\tThank you for Purchasing!";
         return text;
     }
+
 
 }

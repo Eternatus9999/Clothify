@@ -128,5 +128,27 @@ public class ProductController {
         return true;
     }
 
+    public double getData(String category){
+        double total = 0;
+        List<Product> list =  productservice.getProduct();
+        for (int i = 0; i <list.size(); i++) {
+            if(list.get(i).getCategory().equals(category)) {
+                total += list.get(i).getQty() * list.get(i).getPrice();
+            }
+        }
+        return total;
+    }
+
+    public double getSupplierData(String category){
+        double total = 0;
+        List<Product> list =  productservice.getProduct();
+        for (int i = 0; i <list.size(); i++) {
+            if(list.get(i).getCategory().equals(category)) {
+                total += list.get(i).getQty();
+            }
+        }
+        return total;
+    }
+
 
 }
