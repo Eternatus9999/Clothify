@@ -61,7 +61,7 @@ public class MainController {
     private boolean isEmployee(String username, String password){
         List<Employee> list =  EmployeeController.getInstance().GetEmployee();
         for(Employee employee : list) {
-            if (employee.getName().equals(username) && employee.getPassword().equals(new Encryptor().encryptString(password))) {
+            if (employee.getId().equals(username) && employee.getPassword().equals(new Encryptor().encryptString(password))) {
                 return true;
             }
         }

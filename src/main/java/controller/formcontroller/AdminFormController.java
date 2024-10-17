@@ -682,8 +682,13 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void UpdateEmployeeOnAction(ActionEvent event) {
-        EmployeeController.getInstance().UpdateEmployee(e_u_name.getText(),e_u_email.getText(),e_u_address.getText(),e_u_password.getText(),e_u_re_password.getText(),e_u_contact.getText());
-        setEmployeetext();
+        if(e_u_id.getValue().isEmpty()){
+            new Alert(Alert.AlertType.ERROR,"Select an Employee to Update").showAndWait();
+        }
+        else{
+            EmployeeController.getInstance().UpdateEmployee(e_u_id.getValue(),e_u_name.getText(),e_u_email.getText(),e_u_address.getText(),e_u_password.getText(),e_u_re_password.getText(),e_u_contact.getText());
+            setEmployeetext();
+        }
     }
 
     @FXML

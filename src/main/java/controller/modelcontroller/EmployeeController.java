@@ -73,7 +73,7 @@ public class EmployeeController {
         }
     }
 
-    public void UpdateEmployee(String name,String email, String address, String password,String checkpassword,String phone){
+    public void UpdateEmployee(String id,String name,String email, String address, String password,String checkpassword,String phone){
 
         Pattern ppassword= Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$");
         Matcher mpassword = ppassword.matcher(password);
@@ -105,7 +105,6 @@ public class EmployeeController {
             new Alert(Alert.AlertType.ERROR,"Password doesn't match").showAndWait();
         }
         else {
-            String id = GenerateId();
             if(employeeservice.updateEmployee(new Employee(id, name, phone, email, address,new Encryptor().encryptString(password)))){
                 new Alert(Alert.AlertType.INFORMATION,"Employee updated Successfully!").showAndWait();
 
@@ -119,7 +118,6 @@ public class EmployeeController {
     public void UpdateEmployee(Employee employee){
         if(employeeservice.updateEmployee(employee)){
             new Alert(Alert.AlertType.INFORMATION,"Employee updated Successfully!").showAndWait();
-
         }
         else{
             new Alert(Alert.AlertType.ERROR,"Employee didn't updated Successfully!").showAndWait();
@@ -127,7 +125,7 @@ public class EmployeeController {
     }
 
     public void DeleteEmployee(Employee entity){
-        new Alert(Alert.AlertType.CONFIRMATION,"Do you want to delete this Employee").showAndWait();
+        new Alert(Alert.AlertType.INFORMATION,"Do you want to delete this Employee").showAndWait();
         employeeservice.deleteEmployee(entity);
     }
 
