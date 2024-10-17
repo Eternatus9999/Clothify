@@ -116,6 +116,16 @@ public class EmployeeController {
         }
     }
 
+    public void UpdateEmployee(Employee employee){
+        if(employeeservice.updateEmployee(employee)){
+            new Alert(Alert.AlertType.INFORMATION,"Employee updated Successfully!").showAndWait();
+
+        }
+        else{
+            new Alert(Alert.AlertType.ERROR,"Employee didn't updated Successfully!").showAndWait();
+        }
+    }
+
     public void DeleteEmployee(Employee entity){
         new Alert(Alert.AlertType.CONFIRMATION,"Do you want to delete this Employee").showAndWait();
         employeeservice.deleteEmployee(entity);

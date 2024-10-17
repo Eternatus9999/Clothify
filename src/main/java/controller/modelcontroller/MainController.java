@@ -10,6 +10,8 @@ import util.Encryptor;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainController {
     private static MainController instance;
@@ -64,5 +66,24 @@ public class MainController {
             }
         }
         return false;
+    }
+
+    public void setPassword(String password, String checkpassword, String id){
+        Pattern ppassword= Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$");
+        Matcher mpassword = ppassword.matcher(password);
+
+        if(password.isEmpty()){
+            new Alert(Alert.AlertType.ERROR,"Enter a Password").showAndWait();
+        } else if (!mpassword.matches()) {
+            new Alert(Alert.AlertType.ERROR,"Password must contain at least one of '!@#$%^&*' and one of numeric").showAndWait();
+        } else if (checkpassword.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR,"Re-Enter the Password").showAndWait();
+        } else if (!password.equals(checkpassword)) {
+            new Alert(Alert.AlertType.ERROR,"Password doesn't match").showAndWait();
+        } else{
+            Employee employee = EmployeeController.getInstance().SearchEmployee(id);
+            employee.setPassword(new Encryptor().encryptString(password));
+            EmployeeController.getInstance().UpdateEmployee(employee);
+        }
     }
 }

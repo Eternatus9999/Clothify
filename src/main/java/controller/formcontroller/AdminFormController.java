@@ -747,10 +747,10 @@ public class AdminFormController implements Initializable {
         p_category_col.setCellValueFactory(new PropertyValueFactory<>("category"));
 
         e_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
-        e_address_col.setCellValueFactory(new PropertyValueFactory<>("id"));
-        e_contact_col.setCellValueFactory(new PropertyValueFactory<>("id"));
-        e_email_col.setCellValueFactory(new PropertyValueFactory<>("id"));
-        e_name_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        e_address_col.setCellValueFactory(new PropertyValueFactory<>("address"));
+        e_contact_col.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        e_email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
+        e_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         s_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
         s_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));

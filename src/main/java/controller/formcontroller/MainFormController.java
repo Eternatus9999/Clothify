@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
 
-    String forgotemail;
 
     @FXML
     private TextField adress;
@@ -69,6 +68,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void DoneOnAction(ActionEvent event) {
+        MainController.getInstance().setPassword(newpassword.getText(), newpasswordcheck.getText(),emaillog.getText());
         mainform.setVisible(false);
         forgotpasswordform.setVisible(false);
         loginform.setVisible(true);
@@ -81,11 +81,10 @@ public class MainFormController implements Initializable {
 
     @FXML
     void NavForgotPassword(ActionEvent event) {
-        if(forgotemail.isEmpty()){
-            new Alert(Alert.AlertType.ERROR,"Enter the Email to set a new password").showAndWait();
+        if(emaillog.getText().isEmpty()){
+            new Alert(Alert.AlertType.ERROR,"Enter the ID to set a new password").showAndWait();
         }
         else{
-            forgotemail = emaillog.getText();
             mainform.setVisible(false);
             forgotpasswordform.setVisible(true);
         }
