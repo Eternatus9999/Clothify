@@ -9,4 +9,5 @@ public interface EmployeeBo {
     boolean updateEmployee(Employee employee);
     boolean deleteEmployee(Employee employee);
     List<Employee> getEmployee();
+    Employee search(String id);
 }

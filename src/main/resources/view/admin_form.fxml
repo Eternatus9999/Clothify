@@ -316,7 +316,7 @@
                         <PieChart fx:id="employeereportpiechart" layoutX="236.0" layoutY="85.0" prefHeight="576.0" prefWidth="800.0" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="addemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;" visible="false">
+                  <AnchorPane fx:id="addemployeeform" layoutX="212.0" prefHeight="871.0" prefWidth="1414.0" style="-fx-background-color: #000000;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="795.0" layoutX="-4.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1284.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9e9d9dcd" height="664.0" layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="1205.0" />
@@ -325,37 +325,32 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="e_password" layoutX="320.0" layoutY="491.0" prefHeight="74.0" prefWidth="702.0" promptText="Password">
+                        <TextField fx:id="e_password" layoutX="320.0" layoutY="447.0" prefHeight="74.0" prefWidth="702.0" promptText="Password">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_contact" layoutX="321.0" layoutY="397.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
+                        <TextField fx:id="e_contact" layoutX="321.0" layoutY="353.0" prefHeight="74.0" prefWidth="702.0" promptText="Contact">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_email" layoutX="323.0" layoutY="212.0" prefHeight="74.0" prefWidth="702.0" promptText="Email">
+                        <TextField fx:id="e_email" layoutX="323.0" layoutY="168.0" prefHeight="74.0" prefWidth="702.0" promptText="Email">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_name" layoutX="323.0" layoutY="122.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
+                        <TextField fx:id="e_name" layoutX="323.0" layoutY="78.0" prefHeight="74.0" prefWidth="702.0" promptText="Name">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_id" layoutX="323.0" layoutY="32.0" prefHeight="74.0" prefWidth="702.0" promptText="ID">
+                        <TextField fx:id="e_address" layoutX="323.0" layoutY="258.0" prefHeight="74.0" prefWidth="702.0" promptText="Address">
                            <font>
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="e_address" layoutX="323.0" layoutY="302.0" prefHeight="74.0" prefWidth="702.0" promptText="Address">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="e_re_password" layoutX="320.0" layoutY="587.0" prefHeight="74.0" prefWidth="702.0" promptText="Re-Password">
+                        <TextField fx:id="e_re_password" layoutX="320.0" layoutY="543.0" prefHeight="74.0" prefWidth="702.0" promptText="Re-Password">
                            <font>
                               <Font size="36.0" />
                            </font>

@@ -1,6 +1,7 @@
 package controller.admincontroller;
 
 
+import controller.EmployeeController;
 import controller.ProductController;
 import controller.SupplierController;
 import controller.maincontroller.MainController;
@@ -15,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Employee;
 import model.Product;
 import model.Supplier;
 
@@ -28,6 +30,7 @@ public class AdminFormController implements Initializable {
 
     private Product deleteproduct;
     private Supplier deletesupplier;
+    private Employee deleteemployee;
 
     @FXML
     private AnchorPane addemployeeform;
@@ -66,9 +69,6 @@ public class AdminFormController implements Initializable {
     private TableColumn e_email_col;
 
     @FXML
-    private TextField e_id;
-
-    @FXML
     private TableColumn e_id_col;
 
     @FXML
@@ -93,7 +93,7 @@ public class AdminFormController implements Initializable {
     private TextField e_u_email;
 
     @FXML
-    private ComboBox<?> e_u_id;
+    private ComboBox<String> e_u_id;
 
     @FXML
     private TextField e_u_name;
@@ -117,7 +117,7 @@ public class AdminFormController implements Initializable {
     private TableView employeetable;
 
     @FXML
-    private ComboBox p_category;
+    private ComboBox<String> p_category;
 
     @FXML
     private TableColumn p_category_col;
@@ -153,13 +153,13 @@ public class AdminFormController implements Initializable {
     private TableColumn p_size_col;
 
     @FXML
-    private ComboBox p_supplier;
+    private ComboBox<String> p_supplier;
 
     @FXML
     private TableColumn p_supplier_col;
 
     @FXML
-    private ComboBox p_u_category;
+    private ComboBox<String> p_u_category;
 
     @FXML
     private ComboBox<String> p_u_id;
@@ -177,7 +177,7 @@ public class AdminFormController implements Initializable {
     private TextField p_u_size;
 
     @FXML
-    private ComboBox p_u_supplier;
+    private ComboBox<String> p_u_supplier;
 
     @FXML
     private AnchorPane productreportform;
@@ -228,7 +228,7 @@ public class AdminFormController implements Initializable {
     private PieChart salesreportchart;
 
     @FXML
-    private ComboBox salesreporttype;
+    private ComboBox<String> salesreporttype;
 
     @FXML
     private PieChart supplierpiechart;
@@ -250,17 +250,44 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void AddEmployeeOnAction(ActionEvent event) {
-
+        EmployeeController.getInstance().AddEmployee(e_name.getText(),e_email.getText(),e_address.getText(),e_password.getText(),e_re_password.getText(),e_contact.getText());
+        setEmployeetext();
     }
 
     @FXML
     void AddProductOnAction(ActionEvent event) {
-        setProductText();
+        if(p_supplier.getValue()==null) {
+            new Alert(Alert.AlertType.ERROR,"Select a Supplier").showAndWait();
+        }
+        else if(p_category.getValue()==null){
+            new Alert(Alert.AlertType.ERROR,"Select a Category").showAndWait();
+        }
+        else{
+            if(ProductController.getInstance().AddProduct(
+                    p_id.getText(),
+                    p_name.getText(),
+                    p_size.getText(),
+                    p_supplier.getValue(),
+                    p_qty.getText(),
+                    p_price.getText(),
+                    p_category.getValue())){
+
+                setProductText();
+                p_id.setText(ProductController.getInstance().GenerateId());
+            }
+        }
     }
 
     @FXML
     void AddSupplierOnAction(ActionEvent event) {
+        SupplierController.getInstance().AddSupplier(
+                s_id.getText(),
+                s_name.getText(),
+                s_company.getText(),
+                s_contact.getText()
+        );
         setSuppliertext();
+        s_id.setText(SupplierController.getInstance().GenerateId());
     }
 
     @FXML
@@ -272,17 +299,26 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void DeleteEmployeeOnAction(ActionEvent event) {
-
+        if(deleteemployee!=null){
+            EmployeeController.getInstance().DeleteEmployee(deleteemployee);
+            setEmployeetable();
+        }
     }
 
     @FXML
     void DeleteProductOnAction(ActionEvent event) {
-
+        if(deleteproduct!=null){
+            ProductController.getInstance().DeleteProduct(deleteproduct);
+            setProducttable();
+        }
     }
 
     @FXML
     void DeleteSupplierOnAction(ActionEvent event) {
-
+        if(deletesupplier!=null){
+            SupplierController.getInstance().DeleteSupplier(deletesupplier);
+            setSuppliertable();
+        }
     }
 
     @FXML
@@ -442,6 +478,8 @@ public class AdminFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
+
+        setEmployee();
     }
 
     @FXML
@@ -500,7 +538,7 @@ public class AdminFormController implements Initializable {
         supplierreportform.setVisible(false);
         salesreportform.setVisible(false);
 
-
+        setEmployeetable();
     }
 
     @FXML
@@ -543,17 +581,45 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void UpdateEmployeeOnAction(ActionEvent event) {
-
+        EmployeeController.getInstance().UpdateEmployee(e_u_name.getText(),e_u_email.getText(),e_u_address.getText(),e_u_password.getText(),e_u_re_password.getText(),e_u_contact.getText());
+        setEmployeetext();
     }
 
     @FXML
     void UpdateProductOnAction(ActionEvent event) {
+        if(p_supplier.getValue()==null) {
+            new Alert(Alert.AlertType.ERROR,"Select a Supplier").showAndWait();
+        }
+        else if(p_category.getValue()==null){
+            new Alert(Alert.AlertType.ERROR,"Select a Category").showAndWait();
+        }
+        else{
+            if(ProductController.getInstance().UpdateProduct(
+                    p_id.getText(),
+                    p_name.getText(),
+                    p_size.getText(),
+                    p_supplier.getValue(),
+                    p_qty.getText(),
+                    p_price.getText(),
+                    p_category.getValue())){
 
+                setProductText();
+                p_id.setText(ProductController.getInstance().GenerateId());
+            }
+        }
     }
 
     @FXML
     void UpdateSupplierOnAction(ActionEvent event) {
-
+        if(s_u_id.getValue()!=null){
+            SupplierController.getInstance().UpdateSupplier(
+                    s_u_id.getValue(),
+                    s_u_name.getText(),
+                    s_u_company.getText(),
+                    s_u_contact.getText()
+            );
+            setSuppliertext();
+        }
     }
 
     @Override
@@ -579,7 +645,11 @@ public class AdminFormController implements Initializable {
         p_qty_col.setCellValueFactory(new PropertyValueFactory<>("qty"));
         p_category_col.setCellValueFactory(new PropertyValueFactory<>("category"));
 
-
+        e_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        e_address_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        e_contact_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        e_email_col.setCellValueFactory(new PropertyValueFactory<>("id"));
+        e_name_col.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         s_id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
         s_name_col.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -604,9 +674,21 @@ public class AdminFormController implements Initializable {
             }
         }));
 
+        employeetable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                deleteemployee = (Employee) t1;
+            }
+        }));
+
         s_u_id.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
             if(t1!=null){
                 setSuppliertext(t1);
+            }
+        }));
+
+        e_u_id.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
+            if(t1!=null){
+                setEmployeetext(t1);
             }
         }));
 
@@ -644,8 +726,22 @@ public class AdminFormController implements Initializable {
         p_u_id.setItems(FXCollections.observableArrayList(productlist));
     }
 
+    private void setEmployee(){
+        List<String> employeelist = new ArrayList<>();
+        List<Employee> employeeentitylist = EmployeeController.getInstance().GetEmployee();
+        for (int i = 0; i <employeeentitylist.size(); i++){
+            employeelist.add((employeeentitylist.get(i)).getId());
+        }
+        e_u_id.setItems(FXCollections.observableArrayList(employeelist));
+
+    }
+
     private void setProducttable(){
         producttable.setItems(FXCollections.observableArrayList(ProductController.getInstance().getProduct()));
+    }
+
+    private void setEmployeetable(){
+        employeetable.setItems(FXCollections.observableArrayList(EmployeeController.getInstance().GetEmployee()));
     }
 
     private void setSuppliertable(){
@@ -693,6 +789,29 @@ public class AdminFormController implements Initializable {
         s_name.setText(null);
         s_company.setText(null);
         s_contact.setText(null);
+    }
+
+    private void setEmployeetext(String id){
+        Employee employee = EmployeeController.getInstance().SearchEmployee(id);
+        e_u_name.setText(employee.getName());
+        e_u_address.setText(employee.getAddress());
+        e_u_contact.setText(employee.getPhone());
+        e_u_email.setText(employee.getEmail());
+    }
+
+    private void setEmployeetext(){
+        e_u_name.setText(null);
+        e_u_address.setText(null);
+        e_u_contact.setText(null);
+        e_u_email.setText(null);
+        e_u_password.setText(null);
+        e_u_re_password.setText(null);
+        e_name.setText(null);
+        e_address.setText(null);
+        e_contact.setText(null);
+        e_email.setText(null);
+        e_password.setText(null);
+        e_re_password.setText(null);
     }
 
 

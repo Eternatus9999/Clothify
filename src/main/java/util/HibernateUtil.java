@@ -10,77 +10,23 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil {
-    private static SessionFactory suppliersession = createSupplierSession();
-    private static SessionFactory ordersession = createOrderSession();
-    private static SessionFactory productsession = createProductSession();
-    private static SessionFactory employeesession = createEmployeeSession();
-    private static SessionFactory orderdetailssession = createOrderDetailSession();
+    private static final SessionFactory sessionFactory = createSessionFactory();
 
-    private static SessionFactory createSupplierSession() {
+    private static SessionFactory createSessionFactory() {
         StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-
-        Metadata metadata = new MetadataSources(build)
-                .addAnnotatedClass(SupplierEntity.class)
-                .getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
-                .build();
-        return metadata.getSessionFactoryBuilder().build();
-    }
-    private static SessionFactory createOrderSession() {
-        StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-
-        Metadata metadata = new MetadataSources(build)
-                .addAnnotatedClass(OrderEntity.class)
-                .getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
-                .build();
-        return metadata.getSessionFactoryBuilder().build();
-    }
-    private static SessionFactory createProductSession() {
-        StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-
-        Metadata metadata = new MetadataSources(build)
-                .addAnnotatedClass(ProductEntity.class)
-                .getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
-                .build();
-        return metadata.getSessionFactoryBuilder().build();
-    }
-    private static SessionFactory createEmployeeSession() {
-        StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-
         Metadata metadata = new MetadataSources(build)
                 .addAnnotatedClass(EmployeeEntity.class)
-                .getMetadataBuilder()
-                .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
-                .build();
-        return metadata.getSessionFactoryBuilder().build();
-    }
-    private static SessionFactory createOrderDetailSession() {
-        StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-
-        Metadata metadata = new MetadataSources(build)
-                .addAnnotatedClass(OrderDetailsEntity.class)
+                .addAnnotatedClass(SupplierEntity.class)
+                .addAnnotatedClass(ProductEntity.class)
+                .addAnnotatedClass(OrderEntity.class)
+                .addAnnotatedClass(OrderDetailsEntity.class) // Add OrderDetailEntity here
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
         return metadata.getSessionFactoryBuilder().build();
     }
 
-
-    public static Session getSupplierSession(){
-        return suppliersession.openSession();
-    }
-    public static Session getOrderSession(){
-        return ordersession.openSession();
-    }
-    public static Session getProductSession(){
-        return productsession.openSession();
-    }
-    public static Session getEmployeeSession(){
-        return employeesession.openSession();
-    }
-    public static Session getOrderDetailsSession(){
-        return orderdetailssession.openSession();
+    public static Session getSession() {
+        return sessionFactory.openSession();
     }
 }

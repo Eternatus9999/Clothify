@@ -538,6 +538,7 @@ public class UserFormController implements Initializable {
         productreportform.setVisible(false);
         supplierreportform.setVisible(false);
 
+        setCategory();
         setSupplier();
         setProduct();
     }
@@ -1051,6 +1052,5 @@ public class UserFormController implements Initializable {
         o_u_email.setText(order.getCustemail());
         u_cart.setItems(FXCollections.observableArrayList(OrderController.getInstance().getorderdetails(order.getOrid())));
     }
-
 
 }

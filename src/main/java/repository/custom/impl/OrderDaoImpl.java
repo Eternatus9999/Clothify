@@ -13,7 +13,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public boolean save(OrderEntity orderEntity) {
-        Session session = HibernateUtil.getOrderSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.persist(orderEntity);
         session.getTransaction().commit();
@@ -22,7 +22,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public boolean delete(String id) {
-        Session session = HibernateUtil.getOrderSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.remove(searchdetails(id));
         session.getTransaction().commit();
@@ -31,7 +31,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<OrderEntity> getAll() {
-        Session session = HibernateUtil.getOrderSession();
+        Session session = HibernateUtil.getSession();
         return session.createQuery("from OrderEntity",OrderEntity.class).list();
     }
 
@@ -42,18 +42,18 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public OrderEntity search(String id) {
-        Session session = HibernateUtil.getOrderSession();
+        Session session = HibernateUtil.getSession();
         return session.get(OrderEntity.class,id);
     }
 
     public OrderEntity searchdetails(String id) {
-        Session session = HibernateUtil.getOrderSession();
+        Session session = HibernateUtil.getSession();
         return session.get(OrderEntity.class,id);
     }
 
     @Override
     public List<OrderDetailsEntity> getalldetails(String id) {
-        Session session = HibernateUtil.getOrderDetailsSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         List<OrderDetailsEntity> list = session.createQuery("from OrderDetailsEntity Where orid = \""+id+"\"",OrderDetailsEntity.class).list();
         session.getTransaction().commit();
@@ -61,7 +61,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     public boolean savedetails(OrderDetailsEntity entity){
-        Session session = HibernateUtil.getOrderDetailsSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.persist(entity);
         session.getTransaction().commit();
@@ -69,7 +69,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     public List<OrderDetailsEntity> deletedetails(String id){
-        Session session = HibernateUtil.getOrderDetailsSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         List<OrderDetailsEntity> list = session.createQuery("from OrderDetailsEntity Where orid = \""+id+"\"",OrderDetailsEntity.class).list();
         list.forEach(entity -> {

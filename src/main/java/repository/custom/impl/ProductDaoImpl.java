@@ -11,7 +11,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public boolean save(ProductEntity product) {
-        Session session = HibernateUtil.getProductSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.persist(product);
         session.getTransaction().commit();
@@ -21,7 +21,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public boolean delete(String id) {
-        Session session = HibernateUtil.getProductSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.remove(session.get(ProductEntity.class,id));
         session.getTransaction().commit();
@@ -30,13 +30,13 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<ProductEntity> getAll() {
-        Session session = HibernateUtil.getProductSession();
+        Session session = HibernateUtil.getSession();
         return session.createQuery("From ProductEntity", ProductEntity.class).list();
     }
 
     @Override
     public boolean update(ProductEntity productEntity) {
-        Session session = HibernateUtil.getProductSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.merge(productEntity.getId(),productEntity);
         session.getTransaction().commit();
@@ -45,7 +45,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public ProductEntity search(String id) {
-        Session session = HibernateUtil.getProductSession();
+        Session session = HibernateUtil.getSession();
         return session.get(ProductEntity.class,id);
     }
 }

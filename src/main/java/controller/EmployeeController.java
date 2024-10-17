@@ -63,7 +63,6 @@ public class EmployeeController {
             String id = GenerateId();
             if(employeeservice.addEmployee(new Employee(id, name, phone, email, address, password))){
                 new Alert(Alert.AlertType.INFORMATION,"Employee added Successfully!").showAndWait();
-                MainController.getInstance().NavigatetoUserInterface();
             }
             else{
                 new Alert(Alert.AlertType.ERROR,"Employee didn't added Successfully!").showAndWait();
@@ -117,6 +116,14 @@ public class EmployeeController {
     public void DeleteEmployee(Employee entity){
         new Alert(Alert.AlertType.CONFIRMATION,"Do you want to delete this Employee").showAndWait();
         employeeservice.deleteEmployee(entity);
+    }
+
+    public Employee SearchEmployee(String id){
+        return employeeservice.search(id);
+    }
+
+    public List<Employee> GetEmployee(){
+        return employeeservice.getEmployee();
     }
 
 }

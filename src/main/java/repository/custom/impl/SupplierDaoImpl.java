@@ -11,7 +11,7 @@ public class SupplierDaoImpl implements SupplierDao {
 
     @Override
     public boolean save(SupplierEntity supplier) {
-        Session session = HibernateUtil.getSupplierSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.persist(supplier);
         session.getTransaction().commit();
@@ -21,7 +21,7 @@ public class SupplierDaoImpl implements SupplierDao {
 
     @Override
     public boolean delete(String id) {
-        Session session = HibernateUtil.getSupplierSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.remove(session.get(SupplierEntity.class,id));
         session.getTransaction().commit();
@@ -30,13 +30,13 @@ public class SupplierDaoImpl implements SupplierDao {
 
     @Override
     public List<SupplierEntity> getAll() {
-        Session session = HibernateUtil.getSupplierSession();
+        Session session = HibernateUtil.getSession();
         return session.createQuery("from SupplierEntity",SupplierEntity.class).list();
     }
 
     @Override
     public boolean update(SupplierEntity supplierentity) {
-        Session session = HibernateUtil.getSupplierSession();
+        Session session = HibernateUtil.getSession();
         session.beginTransaction();
         session.merge(supplierentity.getId(),supplierentity);
         session.getTransaction().commit();
@@ -45,7 +45,7 @@ public class SupplierDaoImpl implements SupplierDao {
 
     @Override
     public SupplierEntity search(String id) {
-        Session session = HibernateUtil.getSupplierSession();
+        Session session = HibernateUtil.getSession();
         return session.get(SupplierEntity.class,id);
     }
 }
