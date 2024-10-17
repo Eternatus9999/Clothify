@@ -1,4 +1,4 @@
-package controller;
+package controller.modelcontroller;
 
 import javafx.scene.control.Alert;
 import model.Product;

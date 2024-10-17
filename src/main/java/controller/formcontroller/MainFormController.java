@@ -1,6 +1,7 @@
-package controller.maincontroller;
+package controller.formcontroller;
 
-import controller.EmployeeController;
+import controller.modelcontroller.EmployeeController;
+import controller.modelcontroller.MainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

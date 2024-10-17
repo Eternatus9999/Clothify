@@ -1,11 +1,11 @@
-package controller.admincontroller;
+package controller.formcontroller;
 
 
-import controller.EmployeeController;
-import controller.OrderController;
-import controller.ProductController;
-import controller.SupplierController;
-import controller.maincontroller.MainController;
+import controller.modelcontroller.EmployeeController;
+import controller.modelcontroller.OrderController;
+import controller.modelcontroller.ProductController;
+import controller.modelcontroller.SupplierController;
+import controller.modelcontroller.MainController;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

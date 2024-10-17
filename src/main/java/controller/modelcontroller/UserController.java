@@ -1,7 +1,5 @@
-package controller.usercontroller;
+package controller.modelcontroller;
 
-import controller.OrderController;
-import controller.ProductController;
 import javafx.collections.ObservableList;
 import model.Order;
 import model.OrderDetails;

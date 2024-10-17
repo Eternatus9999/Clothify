@@ -1,7 +1,5 @@
-package controller;
+package controller.modelcontroller;
 
-import controller.maincontroller.MainController;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import model.Employee;

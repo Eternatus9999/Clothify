@@ -1,6 +1,5 @@
-package controller;
+package controller.modelcontroller;
 
-import controller.usercontroller.UserController;
 import javafx.scene.chart.PieChart;
 import model.Order;
 import model.OrderDetails;

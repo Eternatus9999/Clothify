@@ -1,4 +1,4 @@
-package controller.admincontroller;
+package controller.modelcontroller;
 
 public class AdminController {
     private static AdminController instance;
