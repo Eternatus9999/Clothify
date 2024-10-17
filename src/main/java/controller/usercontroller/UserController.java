@@ -36,9 +36,9 @@ public class UserController {
             ProductController.getInstance().UpdateItemQty(((OrderDetails) o).getQty()*-1,((OrderDetails) o).getId());
         });
         String subject = "Clothify Order Number: "+order.getOrid();
-        String text = GenerateBill(list);
-        String file = new CreatePdf().create(text);
-        EmailSender.create(order.getCustemail(), subject, " Name: "+order.getCustname()+"\nTotal : "+order.getTotal(),file);
+//        String text = GenerateBill(list);
+//        String file = new CreatePdf().create(text);
+//        EmailSender.create(order.getCustemail(), subject, " Name: "+order.getCustname()+"\nTotal : "+order.getTotal(),file);
         return true;
     }
 

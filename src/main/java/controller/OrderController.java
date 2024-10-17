@@ -39,10 +39,6 @@ public class OrderController {
         return cart;
     }
 
-    public void setCart(List<OrderDetails> list){
-        cart = list;
-    }
-
     public void setTotal(double total){
         totalprice+=total;
     }
@@ -86,8 +82,11 @@ public class OrderController {
     }
 
     public List<OrderDetails> getorderdetails(String id){
-        return orderservice.searchOrderDetail(id);
+        cart = orderservice.searchOrderDetail(id);
+        cart.forEach(orderDetails -> {
+            setTotal(orderDetails.getPrice());
+        });
+        return cart;
     }
-
 
 }

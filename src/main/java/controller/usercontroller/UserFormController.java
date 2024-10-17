@@ -661,16 +661,16 @@ public class UserFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,"Select a Payment Method").showAndWait();
         }
         else{
-            UserController.getInstance().DeleteOrder(deleteorder);
+            UserController.getInstance().DeleteOrder(OrderController.getInstance().SearchOrder(o_u_id.getValue()));
             if(UserController.getInstance().PlaceOrder(new Order(
                             o_u_id.getValue(),
                             o_u_name.getText(),
                             o_u_email.getText(),
                             o_u_paymenttype.getValue(),
-                            Double.parseDouble(totalprice.getText()),
+                            Double.parseDouble(u_totalprice.getText()),
                             0,
                             UserController.getInstance().getDate()
-                    ),cart.getItems()
+                    ),u_cart.getItems()
             )){
                 new Alert(Alert.AlertType.INFORMATION,"Order updated successfully").showAndWait();
                 additem(-1);
@@ -1027,7 +1027,7 @@ public class UserFormController implements Initializable {
         }else {
             List<OrderDetails> cartlist = OrderController.getInstance().getCart();
             cartlist.remove(deleteitem);
-            OrderController.getInstance().setTotal((deleteitem.getPrice()-deleteitem.getDiscount())*-1);
+            OrderController.getInstance().setTotal(deleteitem.getPrice()*-1);
             u_totalprice.setText(OrderController.getInstance().getTotal());
             deleteitem =null;
             u_cart.setItems(FXCollections.observableArrayList(cartlist));
