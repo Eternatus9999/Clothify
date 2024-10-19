@@ -72,7 +72,12 @@ public class SupplierController {
 
     public String GenerateId(){
         List<Supplier> list = supplierservice.getSupplier();
-        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("S",2))[1])+1;
+        list.sort((supplier1,supplier2) -> {
+            int id1 = Integer.parseInt(supplier1.getId().split("S")[1]);
+            int id2 = Integer.parseInt(supplier2.getId().split("S")[1]);
+            return Integer.compare(id1, id2);
+        });
+        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("S"))[1])+1;
         return "S"+id;
     }
 

@@ -19,11 +19,13 @@ public class UserController {
     private UserController(String employee){
         UserController.employee = employee;
     }
+
     private UserController(){}
 
     public static UserController getInstance(String employee){
         return instance==null?instance= new UserController(employee):instance;
     }
+
     public static UserController getInstance(){
         return instance==null?instance= new UserController():instance;
     }

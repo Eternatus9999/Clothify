@@ -71,7 +71,12 @@ public class OrderController {
 
     public String GenerateId(){
         List<Order> list = orderservice.getOrder();
-        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getOrid().split("OR",2))[1])+1;
+        list.sort((order1,order2) -> {
+            int id1 = Integer.parseInt(order1.getOrid().split("OR")[1]);
+            int id2 = Integer.parseInt(order2.getOrid().split("OR")[1]);
+            return Integer.compare(id1, id2);
+        });
+        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getOrid().split("OR"))[1])+1;
         return "OR"+id;
     }
 

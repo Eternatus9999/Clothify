@@ -23,7 +23,12 @@ public class ProductController {
 
     public String GenerateId(){
         List<Product> list = productservice.getProduct();
-        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("P",2)[1]))+1;
+        list.sort((item1,item2) -> {
+            int id1 = Integer.parseInt(item1.getId().split("P")[1]);
+            int id2 = Integer.parseInt(item2.getId().split("P")[1]);
+            return Integer.compare(id1, id2);
+        });
+        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("P")[1]))+1;
         return "P"+id;
     }
 
