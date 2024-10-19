@@ -3,6 +3,8 @@ package controller.modelcontroller;
 import javafx.collections.ObservableList;
 import model.Order;
 import model.OrderDetails;
+import util.CreatePdf;
+import util.EmailSender;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -39,9 +41,9 @@ public class UserController {
             ProductController.getInstance().UpdateItemQty(((OrderDetails) o).getQty()*-1,((OrderDetails) o).getId());
         });
         String subject = "Clothify Order Number: "+order.getOrid();
-//        String text = GenerateBill(list);
-//        String file = new CreatePdf().create(text);
-//        EmailSender.create(order.getCustemail(), subject, " Name: "+order.getCustname()+"\nTotal : "+order.getTotal(),file);
+        String text = GenerateBill(list);
+        String file = new CreatePdf().create(text);
+        EmailSender.create(order.getCustemail(), subject, " Name: "+order.getCustname()+"\nTotal : "+order.getTotal(),file);
         return true;
     }
 

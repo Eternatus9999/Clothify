@@ -27,7 +27,7 @@ public class EmployeeController {
 
     public String GenerateId(){
         List<Employee> list = employeeservice.getEmployee();
-        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("Emp")[1]))+1;
+        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("Emp",2)[1]))+1;
         return "Emp"+id;
     }
 

@@ -23,7 +23,7 @@ public class ProductController {
 
     public String GenerateId(){
         List<Product> list = productservice.getProduct();
-        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("P")[1]))+1;
+        int id = list.isEmpty() ?1:Integer.parseInt((list.getLast().getId().split("P",2)[1]))+1;
         return "P"+id;
     }
 
