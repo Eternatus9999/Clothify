@@ -134,11 +134,11 @@ public class OrderController {
         for (int i = 0; i <orderlist.size(); i++) {
             List<OrderDetails> orderDetailsList = OrderController.getInstance().getorderdetails(orderlist.get(i).getOrid());
             for (int j = 0; j <orderDetailsList.size(); j++) {
-                if(ProductController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Gents")){
+                if(productController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Gents")){
                     gentqty+=orderDetailsList.get(j).getQty();
-                }else if(ProductController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Ladies")){
+                }else if(productController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Ladies")){
                     ladiesqty+=orderDetailsList.get(j).getQty();
-                }else if(ProductController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Kids")){
+                }else if(productController.getInstance().SearchProduct(orderDetailsList.get(j).getId()).getCategory().equals("Kids")){
                     kidsqty+=orderDetailsList.get(j).getQty();
                 }
             }

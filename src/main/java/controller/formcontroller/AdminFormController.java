@@ -3,7 +3,7 @@ package controller.formcontroller;
 
 import controller.modelcontroller.EmployeeController;
 import controller.modelcontroller.OrderController;
-import controller.modelcontroller.ProductController;
+import controller.modelcontroller.productController;
 import controller.modelcontroller.SupplierController;
 import controller.modelcontroller.MainController;
 import javafx.beans.binding.Bindings;
@@ -267,7 +267,7 @@ public class AdminFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,"Select a Category").showAndWait();
         }
         else{
-            if(ProductController.getInstance().AddProduct(
+            if(productController.getInstance().AddProduct(
                     p_id.getText(),
                     p_name.getText(),
                     p_size.getText(),
@@ -277,7 +277,7 @@ public class AdminFormController implements Initializable {
                     p_category.getValue())){
 
                 setProductText();
-                p_id.setText(ProductController.getInstance().GenerateId());
+                p_id.setText(productController.getInstance().GenerateId());
             }
         }
     }
@@ -312,7 +312,7 @@ public class AdminFormController implements Initializable {
     @FXML
     void DeleteProductOnAction(ActionEvent event) {
         if(deleteproduct!=null){
-            ProductController.getInstance().DeleteProduct(deleteproduct);
+            productController.getInstance().DeleteProduct(deleteproduct);
             setProducttable();
         }
     }
@@ -334,7 +334,7 @@ public class AdminFormController implements Initializable {
 
     @FXML
     void DownloadPROnAction(ActionEvent event) {
-        String text = ProductController.getInstance().GetReport();
+        String text = productController.getInstance().GetReport();
         new CreatePdf().create(text,"ProductReport");
         new Alert(Alert.AlertType.INFORMATION,"ProductReport Downloaded!").showAndWait();
     }
@@ -700,7 +700,7 @@ public class AdminFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,"Select a Category").showAndWait();
         }
         else{
-            if(ProductController.getInstance().UpdateProduct(
+            if(productController.getInstance().UpdateProduct(
                     p_id.getText(),
                     p_name.getText(),
                     p_size.getText(),
@@ -710,7 +710,7 @@ public class AdminFormController implements Initializable {
                     p_category.getValue())){
 
                 setUpdateProductText();
-                p_id.setText(ProductController.getInstance().GenerateId());
+                p_id.setText(productController.getInstance().GenerateId());
             }
         }
     }
@@ -798,7 +798,7 @@ public class AdminFormController implements Initializable {
             }
         }));
 
-        p_id.setText(ProductController.getInstance().GenerateId());
+        p_id.setText(productController.getInstance().GenerateId());
         s_id.setText(SupplierController.getInstance().GenerateId());
 
     }
@@ -825,7 +825,7 @@ public class AdminFormController implements Initializable {
 
     private void setProduct(){
         List<String> productlist = new ArrayList<>();
-        List<Product> productentitylist = ProductController.getInstance().getProduct();
+        List<Product> productentitylist = productController.getInstance().getProduct();
         for (int i = 0; i <productentitylist.size(); i++){
             productlist.add((productentitylist.get(i)).getId());
         }
@@ -843,7 +843,7 @@ public class AdminFormController implements Initializable {
     }
 
     private void setProducttable(){
-        producttable.setItems(FXCollections.observableArrayList(ProductController.getInstance().getProduct()));
+        producttable.setItems(FXCollections.observableArrayList(productController.getInstance().getProduct()));
     }
 
     private void setEmployeetable(){
@@ -855,7 +855,7 @@ public class AdminFormController implements Initializable {
     }
 
     private void setProductText(String id){
-        Product product =  ProductController.getInstance().SearchProduct(id);
+        Product product =  productController.getInstance().SearchProduct(id);
         p_u_category.setValue(product.getCategory());
         p_u_supplier.setValue(product.getSupplier());
         p_u_name.setText(product.getName());
@@ -931,9 +931,9 @@ public class AdminFormController implements Initializable {
 
     private void SetProductChart(){
         productreportpiechart.getData().clear();
-        double ladies = ProductController.getInstance().getData("Ladies");
-        double gents = ProductController.getInstance().getData("Gents");
-        double kids = ProductController.getInstance().getData("Kids");
+        double ladies = productController.getInstance().getData("Ladies");
+        double gents = productController.getInstance().getData("Gents");
+        double kids = productController.getInstance().getData("Kids");
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Ladies",ladies),
@@ -952,9 +952,9 @@ public class AdminFormController implements Initializable {
 
     private void SetSupplierChart(){
         supplierpiechart.getData().clear();
-        double ladies = ProductController.getInstance().getSupplierData("Ladies");
-        double gents = ProductController.getInstance().getSupplierData("Gents");
-        double kids = ProductController.getInstance().getSupplierData("Kids");
+        double ladies = productController.getInstance().getSupplierData("Ladies");
+        double gents = productController.getInstance().getSupplierData("Gents");
+        double kids = productController.getInstance().getSupplierData("Kids");
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Ladies",ladies),

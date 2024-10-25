@@ -83,7 +83,7 @@ public class SupplierController {
 
     public String GetReport(){
         String text =" \t\t\t\t\t\t\t\t\t\t\t\tSUPPLIER REPORT\n\n\nProduct\t\tSupplier\t\tOrder Qty\n";
-        List<Product> list =  ProductController.getInstance().getProduct();
+        List<Product> list =  productController.getInstance().getProduct();
         for (int i = 0; i <list.size(); i++) {
             text += list.get(i).getId()+"\t\t\t\t"+list.get(i).getSupplier()+"\t\t\t\t"+list.get(i).getQty()+"\n";
         }

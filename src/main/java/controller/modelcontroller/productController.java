@@ -10,13 +10,13 @@ import service.custom.impl.ProductBoImpl;
 
 import java.util.List;
 
-public class ProductController {
-    private static ProductController instance;
+public class productController {
+    private static productController instance;
 
-    private ProductController(){}
+    private productController(){}
 
-    public static ProductController getInstance(){
-        return instance==null?instance=new ProductController():instance;
+    public static productController getInstance(){
+        return instance==null?instance=new productController():instance;
     }
 
     final ProductBo productservice = new ProductBoImpl();
@@ -158,7 +158,7 @@ public class ProductController {
 
     public String GetReport(){
         String text =" \t\t\t\t\t\t\t\t\t\t\t\tPRODUCT REPORT\n\n\nProduct\t\tQty\t\t  \tPrice\t\t\t\tTotal Price\n";
-        List<Product> list =  ProductController.getInstance().getProduct();
+        List<Product> list =  productController.getInstance().getProduct();
         for (int i = 0; i <list.size(); i++) {
             text += list.get(i).getId()+"\t\t\t\t"+list.get(i).getQty()+"\t\t\t\t"+list.get(i).getPrice()+"\t\t\t\t"+list.get(i).getPrice()*list.get(i).getQty()+"\n";
         }

@@ -40,7 +40,7 @@ public class UserController {
         OrderController.getInstance().PlaceOrder(order);
         list.forEach(o -> {
             OrderController.getInstance().addCart((OrderDetails) o);
-            ProductController.getInstance().UpdateItemQty(((OrderDetails) o).getQty()*-1,((OrderDetails) o).getId());
+            productController.getInstance().UpdateItemQty(((OrderDetails) o).getQty()*-1,((OrderDetails) o).getId());
         });
         String subject = "Clothify Order Number: "+order.getOrid();
         String text = GenerateBill(list);
@@ -53,7 +53,7 @@ public class UserController {
         OrderController.getInstance().DeleteOrder(order);
         List<OrderDetails> list = OrderController.getInstance().deleteCart(order);
         list.forEach(orderDetails -> {
-            ProductController.getInstance().UpdateItemQty(orderDetails.getQty(),orderDetails.getId());
+            productController.getInstance().UpdateItemQty(orderDetails.getQty(),orderDetails.getId());
         });
         return true;
     }

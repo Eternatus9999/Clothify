@@ -1,7 +1,6 @@
 package util;
 
 
-import jakarta.activation.DataSource;
 import jakarta.activation.FileDataSource;
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;
@@ -9,7 +8,6 @@ import org.simplejavamail.api.mailer.config.TransportStrategy;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
 
-import java.io.File;
 
 
 public class EmailSender {
@@ -54,6 +52,5 @@ public class EmailSender {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
